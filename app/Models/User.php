@@ -60,6 +60,13 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    /**
+     * The relationships that should always be loaded
+     * 
+     * @var array
+     */
+    protected $with = ['profile'];
+
     protected function defaultProfilePhotoUrl() {
         return asset('/storage/images/default.png');
     }
