@@ -10,6 +10,8 @@ import JetLabel from '@/Components/Label.vue';
 
 const form = useForm({
     name: '',
+    username: '',
+    gender: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -46,6 +48,27 @@ const submit = () => {
                     autofocus
                     autocomplete="name"
                 />
+                <JetInputError class="mt-2" :message="form.errors.name" />
+            </div>
+            <div>
+                <JetLabel for="username" value="Username" />
+                <JetInput
+                    id="username"
+                    v-model="form.username"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="username"
+                />
+                <JetInputError class="mt-2" :message="form.errors.name" />
+            </div>
+            <div>
+                <JetLabel for="gender" value="Gender" />
+                <select v-model="form.gender" id="gender" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option disabled value="">Please select one</option>
+                    <option v-bind:value="'Female'">Female</option>
+                    <option v-bind:value="'Male'">Male</option>
+                </select>
                 <JetInputError class="mt-2" :message="form.errors.name" />
             </div>
 
