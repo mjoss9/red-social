@@ -34,7 +34,10 @@ const submit = () => {
 
     <JetAuthenticationCard>
         <template #logo>
-            <JetAuthenticationCardLogo />
+            <Link :href="route('welcome')">
+                <img class="w-24 rounded-full" src="/storage/app/public/images/bob.jpg" alt="logo"/>
+            </Link>
+            <!-- <JetAuthenticationCardLogo /> -->
         </template>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">

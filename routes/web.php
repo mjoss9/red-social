@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [WelcomeControler::class, 'show'])->name('welcome');
+Route::middleware(['guest'])->get('/', [WelcomeControler::class, 'show'])->name('welcome');
 
 Route::middleware([
     'auth:sanctum',
