@@ -60,6 +60,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    protected function defaultProfilePhotoUrl() {
+        return asset('/storage/images/default.png');
+    }
+
     public function profile() {
         return $this->hasOne(Profile::class);
     }
