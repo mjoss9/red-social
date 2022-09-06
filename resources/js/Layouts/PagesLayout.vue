@@ -11,10 +11,8 @@
     </app-layout>
 </template>
 
-<script>
+<script setup>
 
-import AppLayout from './AppLayout';
-export default {
-    
-}
+import AppLayout from './AppLayout.vue';
+
 </script>
