@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\WelcomeControler;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,6 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+])->prefix('user')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 });

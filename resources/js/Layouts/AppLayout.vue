@@ -1,11 +1,12 @@
 <script setup>
-import { ref } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
-import { Head, Link } from '@inertiajs/inertia-vue3';
-import JetDropdown from '@/Components/Dropdown.vue';
-import JetDropdownLink from '@/Components/DropdownLink.vue';
-import JetNavLink from '@/Components/NavLink.vue';
-import JetResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { ref } from "vue";
+import { Inertia } from "@inertiajs/inertia";
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import JetDropdown from "@/Components/Dropdown.vue";
+import JetDropdownLink from "@/Components/DropdownLink.vue";
+import JetNavLink from "@/Components/NavLink.vue";
+import JetResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import SideBar from "@/Components/SideBar.vue";
 
 defineProps({
     title: String,
@@ -13,9 +14,8 @@ defineProps({
 
 const showingNavigationDropdown = ref(false);
 
-
 const logout = () => {
-    Inertia.post(route('logout'));
+    Inertia.post(route("logout"));
 };
 </script>
 
@@ -31,34 +31,73 @@ const logout = () => {
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')" class="h-3/8 w-12">
-                                    <img :src="'/storage/images/bob.jpg'" alt="logo" class="rounded-full">
+                                <Link
+                                    :href="route('dashboard.index')"
+                                    class="h-3/8 w-12"
+                                >
+                                    <img
+                                        :src="'/storage/images/bob.jpg'"
+                                        alt="logo"
+                                        class="rounded-full"
+                                    />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                            >
+                                <JetNavLink
+                                    :href="route('dashboard.index')"
+                                    :active="route().current('dashboard.index')"
+                                >
                                     Dashboard
                                 </JetNavLink>
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:justify-end sm:ml-6 w-1/2">
-
+                        <div
+                            class="hidden sm:flex sm:items-center sm:justify-end sm:ml-6 w-1/2"
+                        >
                             <!-- Settings Dropdown -->
                             <div class="flex items-center ml-3 relative">
                                 <JetDropdown align="right" width="48">
                                     <template #trigger>
-                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex items-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-transparent transition duration-150 ease-in-out">
+                                        <button
+                                            v-if="
+                                                $page.props.jetstream
+                                                    .managesProfilePhotos
+                                            "
+                                            class="flex items-center text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-transparent transition duration-150 ease-in-out"
+                                        >
                                             <template v-if="$page.props.user">
-                                                <span class="capitalize">Welcome, {{ $page.props.user.username}} !</span>
+                                                <span class="capitalize"
+                                                    >Welcome,
+                                                    {{
+                                                        $page.props.user
+                                                            .username
+                                                    }}
+                                                    !</span
+                                                >
                                             </template>
-                                            <span class="capitalize" v-else>Welcome, User!</span>
-                                            <img class="h-8 w-8 rounded-full object-cover ml-3" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
+                                            <span class="capitalize" v-else
+                                                >Welcome, User!</span
+                                            >
+                                            <img
+                                                class="h-8 w-8 rounded-full object-cover ml-3"
+                                                :src="
+                                                    $page.props.user
+                                                        .profile_photo_url
+                                                "
+                                                :alt="$page.props.user.name"
+                                            />
                                         </button>
 
-                                        <button type="button" class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-transparent transition duration-150 ease-in-out" v-else>
+                                        <button
+                                            type="button"
+                                            class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-transparent transition duration-150 ease-in-out"
+                                            v-else
+                                        >
                                             <div>
                                                 {{ $page.props.user.username }}
                                             </div>
@@ -68,18 +107,26 @@ const logout = () => {
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
                                             >
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"
+                                                />
                                             </svg>
                                         </button>
                                     </template>
 
                                     <template #content>
                                         <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <div
+                                            class="block px-4 py-2 text-xs text-gray-400"
+                                        >
                                             Manage Account
                                         </div>
 
-                                        <JetDropdownLink :href="route('profile.show')">
+                                        <JetDropdownLink
+                                            :href="route('profile.show')"
+                                        >
                                             Profile
                                         </JetDropdownLink>
                                         <!-- No lo estamos usando aun -->
@@ -102,7 +149,13 @@ const logout = () => {
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition" @click="showingNavigationDropdown = ! showingNavigationDropdown">
+                            <button
+                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition"
+                                @click="
+                                    showingNavigationDropdown =
+                                        !showingNavigationDropdown
+                                "
+                            >
                                 <svg
                                     class="h-6 w-6"
                                     stroke="currentColor"
@@ -110,14 +163,22 @@ const logout = () => {
                                     viewBox="0 0 24 24"
                                 >
                                     <path
-                                        :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }"
+                                        :class="{
+                                            hidden: showingNavigationDropdown,
+                                            'inline-flex':
+                                                !showingNavigationDropdown,
+                                        }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16"
                                     />
                                     <path
-                                        :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
+                                        :class="{
+                                            hidden: !showingNavigationDropdown,
+                                            'inline-flex':
+                                                showingNavigationDropdown,
+                                        }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="2"
@@ -130,9 +191,18 @@ const logout = () => {
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+                <div
+                    :class="{
+                        block: showingNavigationDropdown,
+                        hidden: !showingNavigationDropdown,
+                    }"
+                    class="sm:hidden"
+                >
                     <div class="pt-2 pb-3 space-y-1">
-                        <JetResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                        <JetResponsiveNavLink
+                            :href="route('dashboard.index')"
+                            :active="route().current('dashboard.index')"
+                        >
                             Dashboard
                         </JetResponsiveNavLink>
                     </div>
@@ -140,12 +210,23 @@ const logout = () => {
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="flex items-center px-4">
-                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="shrink-0 mr-3">
-                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
+                            <div
+                                v-if="
+                                    $page.props.jetstream.managesProfilePhotos
+                                "
+                                class="shrink-0 mr-3"
+                            >
+                                <img
+                                    class="h-10 w-10 rounded-full object-cover"
+                                    :src="$page.props.user.profile_photo_url"
+                                    :alt="$page.props.user.name"
+                                />
                             </div>
 
                             <div>
-                                <div class="font-medium text-base text-gray-800">
+                                <div
+                                    class="font-medium text-base text-gray-800"
+                                >
                                     {{ $page.props.user.name }}
                                 </div>
                                 <div class="font-medium text-sm text-gray-500">
@@ -155,7 +236,10 @@ const logout = () => {
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <JetResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
+                            <JetResponsiveNavLink
+                                :href="route('profile.show')"
+                                :active="route().current('profile.show')"
+                            >
                                 Profile
                             </JetResponsiveNavLink>
 
@@ -176,12 +260,12 @@ const logout = () => {
 
             <div class="flex flex-wrap pt-16 sm:flex-nowrap">
                 <!-- Page Sidebar -->
-
+                <side-bar></side-bar>
+                <!-- Page Content -->
+                <main>
+                    <slot></slot>
+                </main>
             </div>
-            <!-- Page Content -->
-            <main>
-                <slot />
-            </main>
         </div>
     </div>
 </template>
