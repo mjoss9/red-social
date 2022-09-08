@@ -1,3 +1,8 @@
+<script setup>
+
+import AppLayout from './AppLayout.vue';
+
+</script>
 <template>
     <app-layout>
         <div class="lg:px-10">
@@ -10,9 +15,3 @@
         </div>
     </app-layout>
 </template>
-
-<script setup>
-
-import AppLayout from './AppLayout.vue';
-
-</script>
