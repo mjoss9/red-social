@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +16,12 @@ class ProfileFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
-    {
+    public function definition(){
+        $gender = ['Male', 'Female'];
+        $slug = $this->faker->name;
         return [
-            //
+            'slug' => Str::of($slug)->slug('-'),
+            'gender' => Arr::random($gender),
         ];
     }
 }
