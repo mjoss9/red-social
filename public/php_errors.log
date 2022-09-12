@@ -1,0 +1,4 @@
+[12-Sep-2022 17:05:19 UTC] PHP Fatal error:  Trait "App\Models\Friendable" not found in C:\Users\MARIA\iea\social-network\app\Models\User.php on line 13
+[12-Sep-2022 17:05:38 UTC] PHP Fatal error:  Trait "App\Models\Friendable" not found in C:\Users\MARIA\iea\social-network\app\Models\User.php on line 13
+[12-Sep-2022 17:07:24 UTC] PHP Fatal error:  Trait "App\Traits\Friendable" not found in C:\Users\MARIA\iea\social-network\app\Models\User.php on line 14
+[12-Sep-2022 17:13:42 UTC] PHP Fatal error:  Trait "App\Traits\Friendable" not found in C:\Users\MARIA\iea\social-network\app\Models\User.php on line 14

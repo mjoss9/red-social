@@ -12,17 +12,21 @@
                     />
                     <span class="capitalize ml-3"> {{ `${profile.username}'s Profile`}} </span>
                 </h2>
+
+                <status :profile="profile"></status>
             </div>
         </template>
     </pages-layout>
 </template>
-
+<script setup>
+import Status from '../../../Components/FriendStatus/Status.vue';
+</script>
 <script>
-    import PagesLayout from '../../../Layouts/PagesLayout.vue';
+import PagesLayout from '../../../Layouts/PagesLayout.vue';
 export default {
     props: ['profile'],
     components: {
-        PagesLayout,
-    }
+    PagesLayout,    
+}
 }
 </script>
