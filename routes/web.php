@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\WelcomeControler;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,6 @@ Route::middleware([
     'verified',
 ])->prefix('user')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profiles.show');
 });

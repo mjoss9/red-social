@@ -16,3 +16,10 @@
 import AppLayout from './AppLayout.vue';
 
 </script>
+<script>
+export default {
+    components: {
+        AppLayout,
+    }
+}
+</script>
