@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FriendController extends Controller
@@ -31,11 +32,13 @@ class FriendController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        auth()->user()->add_friend($user->id);
+        dd('1');
     }
 
     /**
