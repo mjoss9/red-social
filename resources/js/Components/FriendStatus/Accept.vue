@@ -40,6 +40,10 @@ export default {
                 {
                     preserveScroll: true,
                     onSuccess: () => {
+                        Toast.fire({
+                            icon: "success",
+                            title: "Friend accepted!",
+                        });
                         this.loading = false
                     },
                 }

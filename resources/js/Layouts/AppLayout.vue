@@ -18,6 +18,11 @@ const logout = () => {
     Inertia.post(route("logout"));
 };
 </script>
+<style>
+    body.swal2-toast-shown .swal2-container.swal2-top-end, body.swal2-toast-shown .swal2-container.swal2-top-right {
+        top: 60px;
+    }
+</style>
 
 <template>
     <div>

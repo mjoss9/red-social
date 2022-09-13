@@ -50,7 +50,7 @@
     </div>
 </template>
 <script setup>
-import { FingerprintSpinner } from 'epic-spinners';
+import { FingerprintSpinner } from "epic-spinners";
 import BlueButton from "../Buttons/BlueButton.vue";
 import Accept from "./Accept.vue";
 import Ignore from "./Ignore.vue";
@@ -77,25 +77,33 @@ export default {
     },
     methods: {
         addFriend() {
-            this.loading = true
+            this.loading = true;
             this.addFriendForm.post(
                 this.route("friends.store", this.profile.id),
                 {
                     preserveScroll: true,
                     onSuccess: () => {
-                        this.loading = false
+                        Toast.fire({
+                            icon: "success",
+                            title: "Friend request sent!",
+                        });
+                        this.loading = false;
                     },
                 }
             );
         },
         deleteFriend() {
-            this.loading = true
+            this.loading = true;
             this.deleteFriendForm.delete(
                 this.route("friends.destroy", this.profile.id),
                 {
                     preserveScroll: true,
                     onSuccess: () => {
-                        this.loading = false
+                        Toast.fire({
+                            icon: "success",
+                            title: "Friend has been removed!",
+                        });
+                        this.loading = false;
                     },
                 }
             );
