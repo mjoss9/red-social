@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="ignoreRequest">
         <DangerButton type="submit" class="text-xs">
             Ignore
             <icon name="users-minus" class="w-4 h-4 fill-current ml-1"></icon>
@@ -12,6 +12,13 @@ import DangerButton from '../../../../vendor/laravel/jetstream/stubs/inertia/res
 </script>
 <script>
 export default {
-    props: ['profile']
+    props: ['profile'],
+    methods: {
+        ignoreRequest() {
+            this.$inertia.get(this.route('friends.deny', this.profile.id), {
+                onSuccess: ()=>{}
+            })
+        }
+    }
 }
 </script>

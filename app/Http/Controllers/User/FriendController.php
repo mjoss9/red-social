@@ -92,4 +92,20 @@ class FriendController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function deny(User $user)
+    {
+        if(!$user){
+            return back()->withErrors(['message' => 'This user could not be found']);
+        }
+        auth()->user()->deny_friend($user->id);
+        return back();
+    }    
 }
