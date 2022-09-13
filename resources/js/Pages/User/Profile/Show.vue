@@ -10,23 +10,35 @@
                         :alt="profile.username"
                         class="h-8 w-8 rounded-full object-cover"
                     />
-                    <span class="capitalize ml-3"> {{ `${profile.username}'s Profile`}} </span>
+                    <span class="capitalize ml-3">
+                        {{ `${profile.username}'s Profile` }}
+                    </span>
                 </h2>
 
-                <status :profile="profile"></status>
+                <status
+                    :profile="profile"
+                    :isFriendsWith="isFriendsWith"
+                    :friendRequestSentTo="friendRequestSentTo"
+                    :friendRequestRecivedFrom="friendRequestRecivedFrom"
+                ></status>
             </div>
         </template>
     </pages-layout>
 </template>
 <script setup>
-import Status from '../../../Components/FriendStatus/Status.vue';
+import Status from "../../../Components/FriendStatus/Status.vue";
 </script>
 <script>
-import PagesLayout from '../../../Layouts/PagesLayout.vue';
+import PagesLayout from "../../../Layouts/PagesLayout.vue";
 export default {
-    props: ['profile'],
+    props: [
+        "profile",
+        "isFriendsWith",
+        "friendRequestSentTo",
+        "friendRequestRecivedFrom",
+    ],
     components: {
-    PagesLayout,    
-}
-}
+        PagesLayout,
+    },
+};
 </script>

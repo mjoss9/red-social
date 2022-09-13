@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FriendController extends Controller
 {
@@ -37,8 +37,11 @@ class FriendController extends Controller
      */
     public function store(Request $request, User $user)
     {
+        if(!$user){
+            return back()->withErrors(['message' => 'This user could not be found']);
+        }
         auth()->user()->add_friend($user->id);
-        dd('1');
+        return back();
     }
 
     /**
@@ -67,12 +70,16 @@ class FriendController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if(!$user){
+            return back()->withErrors(['message' => 'This user could not be found']);
+        }
+        auth()->user()->accept_friend($user->id);
+        return back();
     }
 
     /**

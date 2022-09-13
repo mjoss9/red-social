@@ -33,5 +33,6 @@ Route::middleware([
 
     Route::prefix('friends')->name('friends.')->group(function(){
         Route::post('/{user}', [FriendController::class, 'store'])->name('store');
+        Route::patch('/{user}', [FriendController::class, 'update'])->name('update');
     });
 });
