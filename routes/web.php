@@ -35,5 +35,6 @@ Route::middleware([
         Route::post('/{user}', [FriendController::class, 'store'])->name('store');
         Route::patch('/{user}', [FriendController::class, 'update'])->name('update');
         Route::get('/{user}', [FriendController::class, 'deny'])->name('deny');
+        Route::delete('/{user}', [FriendController::class, 'destroy'])->name('destroy');
     });
 });
