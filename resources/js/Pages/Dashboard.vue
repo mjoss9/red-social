@@ -14,41 +14,7 @@
                 </h2>
             </div>
         </template>
-        <form @submit.prevent="submit" class="w-full">
-            <div>
-                <textarea
-                    name="post"
-                    rows="3"
-                    class="border rounded px-2 py-2 w-full"
-                    :placeholder="`Post something ${$page.props.user.username} ...`"
-                    v-model="form.body"
-                ></textarea>
-            </div>
-            <div class="flex justify-between my-3">
-                <div>
-                    <input-error
-                        :message="form.errors.body"
-                        class="mt-2"
-                        v-if="form.errors.body"
-                    >
-                    </input-error>
-                </div>
-                <blue-button
-                    type="submite"
-                    class="text-xs"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disable="form.processing"
-                >
-                    <fingerprint-spinner
-                        :animation-duration="1500"
-                        :size="20"
-                        color="white"
-                        v-if="form.processing"
-                    />
-                    <span v-else>Post</span>
-                </blue-button>
-            </div>
-        </form>
+        <post-form :method="submit" :form="form" :text="'Post'"></post-form>
         <combined-post :posts="combinedPost.data"></combined-post>
     </pages-layout>
 </template>
@@ -56,9 +22,7 @@
 <script setup>
     import PagesLayout from "@/Layouts/PagesLayout.vue";
     import CombinedPost from "../Components/PostComment/CombinedPost.vue";
-    import InputError from "../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/InputError.vue";
-    import BlueButton from "../Components/Buttons/BlueButton.vue";
-    import { FingerprintSpinner } from 'epic-spinners';
+    import PostForm from '../Components/PostComment/PostForm.vue';
     </script>
     <script>
     export default {

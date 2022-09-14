@@ -11,7 +11,6 @@ import PostItem from './PostItem.vue'
 </script>
 <script>
     export default {
-  components: { PostItem },
         props: ['posts']
     }
 </script>
