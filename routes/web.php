@@ -4,6 +4,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\FriendController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\MemberController;
+use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\WelcomeControler;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,9 @@ Route::middleware([
 
     Route::get('members', [MemberController::class, 'index'])->name('members.index');
 
+    Route::prefix('posts')->name('posts.')->group(function(){
+        Route::post('', [PostController::class, 'store'])->name('store');
+    });
     Route::prefix('friends')->name('friends.')->group(function(){
         Route::post('/{user}', [FriendController::class, 'store'])->name('store');
         Route::patch('/{user}', [FriendController::class, 'update'])->name('update');
