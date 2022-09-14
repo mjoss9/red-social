@@ -1,7 +1,12 @@
 <script setup>
 import PagesLayout from "@/Layouts/PagesLayout.vue";
+import CombinedPost from "../Components/PostComment/CombinedPost.vue";
 </script>
-
+<script>
+export default {
+    props: ['posts'],
+}
+</script>
 <template>
     <pages-layout title="Dashboard">
         <template #title>
@@ -18,5 +23,6 @@ import PagesLayout from "@/Layouts/PagesLayout.vue";
                 </h2>
             </div>
         </template>
+        <combined-post :posts="posts"></combined-post>
     </pages-layout>
 </template>
