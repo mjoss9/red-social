@@ -33,7 +33,7 @@
             </div>
             <div class="flex items-end my-3">
                 <div>
-                    <span class="text-sm italic">3 days ago</span>
+                    <span class="text-sm italic">{{ formatDate(post.created_at) }}</span>
                 </div>
 
                 <div class="flex ml-3">
@@ -46,6 +46,11 @@
 </template>
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3';
+import moment from 'moment';
+
+const formatDate = (date) => {
+    return moment(date).fromNow()
+};
 </script>
 <script>
     export default {

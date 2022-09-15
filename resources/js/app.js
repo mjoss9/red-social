@@ -31,7 +31,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .component('Icon', Icon)
-            .mount(el);
+            .mount(el)
     },
 });
 
