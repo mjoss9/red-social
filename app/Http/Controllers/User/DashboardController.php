@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Post;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -17,9 +18,9 @@ class DashboardController extends Controller
     public function index()
     {
         $combinedPost = Post::allPosts()->latest()->paginate();
-        
         return Inertia::render('Dashboard', [
             'combinedPost' => $combinedPost,
+            'suggestions' => User::suggestions()->take(5)->inRandomOrder()->get(),
         ]);
     }
 
