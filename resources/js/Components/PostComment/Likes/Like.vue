@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center">
         <span>
-            5
+            {{ item.liked }}
         </span>
         <form @submit.prevent="method">
             <button type="submit" class="focus:outline-none">
