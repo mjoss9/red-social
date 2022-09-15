@@ -5,6 +5,7 @@ use App\Http\Controllers\User\FriendController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\User\PostLikeController;
 use App\Http\Controllers\WelcomeControler;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,10 @@ Route::middleware([
         Route::patch('/{user}', [FriendController::class, 'update'])->name('update');
         Route::get('/{user}', [FriendController::class, 'deny'])->name('deny');
         Route::delete('/{user}', [FriendController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('post-like')->name('post-like.')->group(function(){
+        Route::post('/{post}', [PostLikeController::class, 'store'])->name('store');
+        Route::delete('/{post}', [PostLikeController::class, 'destroy'])->name('destroy');
     });
 });

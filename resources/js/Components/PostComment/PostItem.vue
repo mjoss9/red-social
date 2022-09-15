@@ -37,8 +37,8 @@
                 </div>
 
                 <div class="flex ml-3">
-                    <span>Like</span>
-                    <span class="ml-2">Dislike</span>
+                    <like :item="post" :method="submitLike"></like>
+                    <dislike :item="post" :method="submitDisLike" class="ml-2"></dislike>
                 </div>
             </div>
         </div>
@@ -47,6 +47,8 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3';
 import moment from 'moment';
+import Like from './Likes/Like.vue';
+import Dislike from './Likes/Dislike.vue';
 
 const formatDate = (date) => {
     return moment(date).fromNow()
@@ -59,6 +61,12 @@ const formatDate = (date) => {
             return {
                 openMenu: false,
                 deleteForm: this.$inertia.form({
+                    userPost: this.post
+                }),
+                likeForm: this.$inertia.form({
+                    userPost: this.post
+                }),
+                dislikeForm: this.$inertia.form({
                     userPost: this.post
                 })
             }
@@ -80,6 +88,18 @@ const formatDate = (date) => {
                             title: 'Tu post ha sido borrado con exito!'
                         })
                     }
+                })
+            },
+            submitLike() {
+                this.likeForm.post(this.route('post-like.store', this.post),{
+                    preserveScroll: true,
+                    onSuccess: ()=>{}
+                })
+            },
+            submitDisLike() {
+                this.dislikeForm.delete(this.route('post-like.destroy', this.post),{
+                    preserveScroll: true,
+                    onSuccess: ()=>{}
                 })
             }
         }
