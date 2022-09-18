@@ -37,7 +37,7 @@ trait Likeable {
     }
     
     public function like($query){
-        if($this->id != $query->user_id && !$this->is_friends_with($query->user_id)) {
+        if($this->id != $query->user_id && !$this->is_friend_with($query->user_id)) {
             return back();
         } else {
             if($this->hasLiked($query)) {
@@ -57,7 +57,7 @@ trait Likeable {
     }
 
     public function dislike($query){
-        if($this->id != $query->user_id && !$this->is_friends_with($query->user_id)) {
+        if($this->id != $query->user_id && !$this->is_friend_with($query->user_id)) {
             return back();
         } else {
             if($this->hasDisliked($query)) {
