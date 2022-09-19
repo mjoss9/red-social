@@ -47,13 +47,16 @@ class ProfileController extends Controller
      * @param  \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Request $request, User $user)
     {
         $post = Post::where('parent_id', $user->id)
                 ->orWhere('user_id', $user->id)
                 ->where('parent_id', null)
                 ->latest()
-                ->paginate();
+                ->paginate(5);
+        if($request->wantsJson()){
+            return $post;
+        }
         return Inertia::render('User/Profile/Show', [
             'profile' => $user,
             'posts' => $post,

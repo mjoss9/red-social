@@ -15,9 +15,12 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $combinedPost = Post::allPosts()->latest()->paginate();
+        $combinedPost = Post::allPosts()->latest()->paginate(5);
+        if($request->wantsJson()){
+            return $combinedPost;
+        }
         return Inertia::render('Dashboard', [
             'combinedPost' => $combinedPost,
             'suggestions' => User::suggestions()->take(5)->inRandomOrder()->get(),

@@ -16,7 +16,9 @@
         </template>
         <post-form :method="submit" :form="form" :text="'Post'"></post-form>
         <suggestion-block :suggestions="suggestions"></suggestion-block>
-        <combined-post :posts="combinedPost.data"></combined-post>
+        <infinite-scroll @loadMore="loadMorePosts">
+            <combined-post :posts="allPosts.data"></combined-post>
+        </infinite-scroll>
     </pages-layout>
 </template>
 
@@ -25,6 +27,7 @@ import PagesLayout from "@/Layouts/PagesLayout.vue";
 import CombinedPost from "../Components/PostComment/CombinedPost.vue";
 import PostForm from "../Components/PostComment/PostForm.vue";
 import SuggestionBlock from "../Components/SuggestionBlock.vue";
+import InfiniteScroll from "../Components/InfiniteScroll.vue";
 </script>
 <script>
 export default {
@@ -35,6 +38,7 @@ export default {
                 user_id: this.$page.props.user.id,
                 body: this.body,
             }),
+            allPosts: this.combinedPost
         };
     },
     methods: {
@@ -50,6 +54,17 @@ export default {
                 },
             });
         },
+        loadMorePosts(){
+            if(!this.allPosts.next_page_url) {
+                return
+            }
+            return axios.get(this.allPosts.next_page_url).then((resp) => {
+                this.allPosts = {
+                    ...resp.data,
+                    data: [...this.allPosts.data, ...resp.data.data],
+                };
+            });
+        }
     },
 };
 </script>

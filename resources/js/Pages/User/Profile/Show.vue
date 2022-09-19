@@ -27,14 +27,16 @@
         
         <post-form :method="submit" :form="form" :text="'Post'"></post-form>
 
-        <combined-post :posts="posts.data"></combined-post>
-
+        <infinite-scroll @loadMore="loadMorePosts">
+            <combined-post :posts="allPosts.data"></combined-post>
+        </infinite-scroll>
     </pages-layout>
 </template>
 <script setup>
 import Status from "../../../Components/FriendStatus/Status.vue";
 import PostForm from "../../../Components/PostComment/PostForm.vue";
 import CombinedPost from "../../../Components/PostComment/CombinedPost.vue";
+import InfiniteScroll from "../../../Components/InfiniteScroll.vue";
 </script>
 <script>
 import PagesLayout from "../../../Layouts/PagesLayout.vue";
@@ -55,6 +57,7 @@ export default {
                 body: this.body,
                 user_id: this.profile.id,
             }),
+            allPosts: this.posts
         };
     },
     methods: {
@@ -70,6 +73,17 @@ export default {
                 },
             });
         },
+        loadMorePosts(){
+            if(!this.allPosts.next_page_url) {
+                return
+            }
+            return axios.get(this.allPosts.next_page_url).then((resp) => {
+                this.allPosts = {
+                    ...resp.data,
+                    data: [...this.allPosts.data, ...resp.data.data],
+                };
+            });
+        }
     },
 };
 </script>
