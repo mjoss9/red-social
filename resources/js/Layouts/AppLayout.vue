@@ -1,3 +1,14 @@
+<script>
+export default {
+    data() {
+        return {
+            unreadNotifications: this.$page.props.auth.unreadNotifications,
+            readNotifications: this.$page.props.auth.readNotifications,
+            notifications: this.$page.props.auth.notifications,
+        }
+    }
+}
+</script>
 <script setup>
 import { ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
@@ -147,6 +158,21 @@ const logout = () => {
                                                 Log Out
                                             </JetDropdownLink>
                                         </form>
+                                    </template>
+                                </JetDropdown>
+                                <JetDropdown align="right" width=96>
+                                    <template #trigger>
+                                        <button class="mt-1 focus:outline-none">
+                                            <div class="flex ml-2 relative">
+                                                <icon name="bell" class="w-6 h-6"></icon>
+                                                <span class="text-white text-xs bg-red-600 rounded-full px-2 py-1 absolute bottom-2 left-3">
+                                                    {{ notifications.length}}
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </template>
+                                    <template #content>
+
                                     </template>
                                 </JetDropdown>
                             </div>

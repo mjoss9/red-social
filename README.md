@@ -13,6 +13,12 @@ In diferents terminals:
 ### Create new controllers:
     php artisan make:controller User\\MemberController -r
 
+### Mail notifications
+    php artisan make:notification SomeonePosted --markdown=mail.posts.posted
+
+### Notificaciton
+    php artisan notifications:table
+
 ## Package used
 ### SweetAlert2
     https://sweetalert2.github.io/#download
