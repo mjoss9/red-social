@@ -26,8 +26,8 @@
                     <span class="text-sm italic">{{ formatDate(comment.created_at) }}</span>
                 </div>
                 <div class="flex ml-3">
-                    <span>Like </span>
-                    <span class="ml-2">Dislike</span>
+                    <like :item="comment" :method="submitLike"></like>
+                    <dislike :item="comment" :method="submitDisLike" class="ml-2"></dislike>
                 </div>
             </div>
         </div>
@@ -46,5 +46,29 @@
 <script>
     export default {
         props: ["comment"],
+        data() {
+            return {
+                likeForm: this.$inertia.form({
+                    comment: this.comment
+                }),
+                dislikeForm: this.$inertia.form({
+                    comment: this.comment
+                }),
+            }
+        },
+        methods: {
+            submitLike() {
+                this.likeForm.post(this.route('comment-like.store', this.comment.id),{
+                    preserveScroll: true,
+                    onSuccess: ()=>{}
+                })
+            },
+            submitDisLike() {
+                this.dislikeForm.delete(this.route('comment-like.destroy', this.comment.id),{
+                    preserveScroll: true,
+                    onSuccess: ()=>{}
+                })
+            }
+        }
     };
 </script>

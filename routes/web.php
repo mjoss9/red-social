@@ -7,6 +7,7 @@ use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\PostLikeController;
+use App\Http\Controllers\User\CommentLikeController;
 use App\Http\Controllers\WelcomeControler;
 use Illuminate\Support\Facades\Route;
 
@@ -53,5 +54,10 @@ Route::middleware([
     Route::prefix('post-like')->name('post-like.')->group(function(){
         Route::post('/{post}', [PostLikeController::class, 'store'])->name('store');
         Route::delete('/{post}', [PostLikeController::class, 'destroy'])->name('destroy');
+    });
+    
+    Route::prefix('comment-like')->name('comment-like.')->group(function(){
+        Route::post('/{comment}', [CommentLikeController::class, 'store'])->name('store');
+        Route::delete('/{comment}', [CommentLikeController::class, 'destroy'])->name('destroy');
     });
 });
