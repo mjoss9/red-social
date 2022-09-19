@@ -10,6 +10,7 @@ export default {
             return [
                 { name: `${this.$page.props.user.username}`, image: `${this.$page.props.user.profile_photo_url}`, alt: `${this.$page.props.user.username}`, route: route('profiles.show', `${this.$page.props.user.username}`)},
                 { name: 'Edit Profile', route: route('profile.show'), icon: 'user-edit'},
+                { name: 'Friends', route: route('friends.index'), icon: 'user-friends'},
                 { name: 'Members', route: route('members.index'), icon: 'users'},
             ]
         }
