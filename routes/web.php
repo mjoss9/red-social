@@ -8,6 +8,7 @@ use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\PostLikeController;
 use App\Http\Controllers\User\CommentLikeController;
+use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\WelcomeControler;
 use Illuminate\Support\Facades\Route;
 
@@ -60,5 +61,11 @@ Route::middleware([
     Route::prefix('comment-like')->name('comment-like.')->group(function(){
         Route::post('/{comment}', [CommentLikeController::class, 'store'])->name('store');
         Route::delete('/{comment}', [CommentLikeController::class, 'destroy'])->name('destroy');
+    });
+    
+    Route::prefix('notifications')->name('notifications.')->group(function(){
+        Route::post('/mark-one/{id}', [NotificationController::class, 'store'])->name('store');
+        Route::get('/mark-all', [NotificationController::class, 'update'])->name('update');
+        Route::get('/mark-delete/{id}', [NotificationController::class, 'destroy'])->name('destroy');
     });
 });

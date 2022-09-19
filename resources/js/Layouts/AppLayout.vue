@@ -1,5 +1,6 @@
 <script>
 export default {
+  components: { Notifications },
     data() {
         return {
             unreadNotifications: this.$page.props.auth.unreadNotifications,
@@ -18,6 +19,7 @@ import JetDropdownLink from "@/Components/DropdownLink.vue";
 import JetNavLink from "@/Components/NavLink.vue";
 import JetResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import SideBar from "@/Components/SideBar.vue";
+import Notifications from '../Components/Notifications.vue';
 
 defineProps({
     title: String,
@@ -160,19 +162,35 @@ const logout = () => {
                                         </form>
                                     </template>
                                 </JetDropdown>
-                                <JetDropdown align="right" width=96>
+                                <JetDropdown align="right" width="96">
                                     <template #trigger>
                                         <button class="mt-1 focus:outline-none">
                                             <div class="flex ml-2 relative">
                                                 <icon name="bell" class="w-6 h-6"></icon>
-                                                <span class="text-white text-xs bg-red-600 rounded-full px-2 py-1 absolute bottom-2 left-3">
-                                                    {{ notifications.length}}
+                                                <template v-if="unreadNotifications.length > 0">
+                                                    <span class="text-white text-xs bg-red-600 rounded-full px-2 py-1 absolute bottom-2 left-3">
+                                                    {{ unreadNotifications.length}}
                                                 </span>
+                                                </template>
                                             </div>
                                         </button>
                                     </template>
-                                    <template #content>
+                                    <template #content v-if="notifications.length > 0">
+                                        <Link :href="route('notifications.update')" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                            Mark all as read
+                                        </Link>
+                                        <div class="border-t border-gray-100">
 
+                                        </div>
+
+                                        <notifications :unreads="unreadNotifications" :reads="readNotifications"></notifications>
+
+                                    </template>
+
+                                    <template #content v-else>
+                                        <div class="block text-center px-4 py-2 text-xs text-gray-400">
+                                            No tienes notificaciones
+                                        </div>
                                     </template>
                                 </JetDropdown>
                             </div>
