@@ -28,7 +28,7 @@
         <post-form :method="submit" :form="form" :text="'Post'"></post-form>
 
         <infinite-scroll @loadMore="loadMorePosts">
-            <combined-post :posts="allPosts.data"></combined-post>
+            <combined-post :posts="allPosts.data" :pagination="pagination"></combined-post>
         </infinite-scroll>
     </pages-layout>
 </template>
@@ -59,6 +59,11 @@ export default {
             }),
             allPosts: this.posts
         };
+    },
+    computed: {
+        pagination(){
+            return this.allPosts = this.posts
+        }
     },
     methods: {
         submit() {

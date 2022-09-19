@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Requests\PostFormRequest ;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\SomeonePosted;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -47,6 +49,8 @@ class PostController extends Controller
                 'parent_id'=> $data['user_id'],
                 'user_id'=>auth()->user()->id,
             ]);
+            $user = User::where('id', $data['user_id'])->first();
+            $user->notify(new SomeonePosted($user, auth()->user()));
             return back();
         }
         if((auth()->user()->id = $data['user_id'])) {
