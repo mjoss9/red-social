@@ -41,6 +41,9 @@
                     <dislike :item="post" :method="submitDisLike" class="ml-2"></dislike>
                 </div>
             </div>
+            <post-form :method="submit" :form="form" :text="'Comment'"></post-form>
+            <combined-comments :comments="post.comments"></combined-comments>
+
         </div>
     </div>
 </template>
@@ -49,6 +52,8 @@ import { Link } from '@inertiajs/inertia-vue3';
 import moment from 'moment';
 import Like from './Likes/Like.vue';
 import Dislike from './Likes/Dislike.vue';
+import CombinedComments from './CombinedComments.vue';
+import PostForm from './PostForm.vue';
 
 const formatDate = (date) => {
     return moment(date).fromNow()
@@ -56,10 +61,15 @@ const formatDate = (date) => {
 </script>
 <script>
     export default {
+  components: { CombinedComments, PostForm },
         props: ['post'],
         data() {
             return {
                 openMenu: false,
+                form: this.$inertia.form({
+                    body: this.body,
+                    user_id: this.post.user_id,
+                }),
                 deleteForm: this.$inertia.form({
                     userPost: this.post
                 }),
@@ -72,6 +82,18 @@ const formatDate = (date) => {
             }
         },
         methods: {
+            submit(){
+                this.form.post(this.route('comments.store', this.post), {
+                    preserveScroll: true,
+                    onSuccess: ()=>{
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Tu comentario fue publicado correctamente'
+                        })
+                        this.form.body = null;
+                    }
+                })
+            },
             deletePost() {
                 this.openMenu = false
                 this.deleteForm.delete(this.route('posts.destroy', this.post),{

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Like;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,7 +19,7 @@ class Post extends Model
      * 
      * @var array
      */
-    protected $with = ['user'];
+    protected $with = ['user', 'comments'];
 
     /**
      * The relationships that should always be loaded
@@ -54,5 +55,9 @@ class Post extends Model
 
     public function likes() {
         return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
     }
 }
