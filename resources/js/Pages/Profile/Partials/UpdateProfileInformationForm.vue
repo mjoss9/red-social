@@ -1,23 +1,7 @@
-<script>
-    export default {
-        data() {
-            return {
-                form: this.$inertia.form({
-                    _method: 'PUT',
-                    name: this.user.name,
-                    username: this.user.username,
-                    gender: this.$page.props.auth.profile.gender,
-                    email: this.user.email,
-                    photo: null,
-                })
-            }
-        }
-    }
-</script>
 <script setup>
 import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
-import { Link, useForm } from '@inertiajs/inertia-vue3';
+import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 import JetButton from '@/Components/Button.vue';
 import JetFormSection from '@/Components/FormSection.vue';
 import JetInput from '@/Components/Input.vue';
@@ -27,17 +11,17 @@ import JetActionMessage from '@/Components/ActionMessage.vue';
 import JetSecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
-    user: Object,
+    user: Object
 });
 
-// const form = useForm({
-//     _method: 'PUT',
-//     name: props.user.name,
-//     username: props.user.username,
-//     gender: this.page.props.auth.profile.gender,
-//     email: props.user.email,
-//     photo: null,
-// });
+const form = useForm({
+    _method: 'PUT',
+    name: props.user.name,
+    username: props.user.username,
+    gender: usePage().props.value.auth.profile.gender,
+    email: props.user.email,
+    photo: null,
+});
 
 const verificationLinkSent = ref(null);
 const photoPreview = ref(null);
@@ -92,6 +76,7 @@ const clearPhotoFileInput = () => {
         photoInput.value.value = null;
     }
 };
+
 </script>
 
 <template>
