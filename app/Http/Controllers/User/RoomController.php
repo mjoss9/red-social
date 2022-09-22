@@ -88,7 +88,9 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $room->active = $request->count;
+        $room->update();
+        return back();
     }
 
     /**

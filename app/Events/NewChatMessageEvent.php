@@ -35,6 +35,6 @@ class NewChatMessageEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chat.'.$this->message->room_id);
+        return new PresenceChannel('chat.'.$this->message->room_id);
     }
 }
