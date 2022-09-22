@@ -5,6 +5,7 @@ use App\Http\Controllers\User\FriendController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\MemberController;
 use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\User\RoomController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\PostLikeController;
 use App\Http\Controllers\User\CommentLikeController;
@@ -67,5 +68,11 @@ Route::middleware([
         Route::post('/mark-one/{id}', [NotificationController::class, 'store'])->name('store');
         Route::get('/mark-all', [NotificationController::class, 'update'])->name('update');
         Route::get('/mark-delete/{id}', [NotificationController::class, 'destroy'])->name('destroy');
+    });
+    
+    Route::prefix('chat/rooms')->name('chat-rooms.')->group(function(){
+        Route::get('', [RoomController::class, 'index'])->name('index');
+        Route::get('/{room:slug}', [RoomController::class, 'show'])->name('show');
+        Route::post('/{room:slug}/messages', [RoomController::class, 'store'])->name('store');
     });
 });
