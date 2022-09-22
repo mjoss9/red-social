@@ -7,6 +7,29 @@ export default {
             readNotifications: this.$page.props.auth.readNotifications,
             notifications: this.$page.props.auth.notifications,
         }
+    },
+    mounted() { 
+        this.listen()
+    },
+    methods: {
+        listen() {
+            window.Echo.private(`App.Models.User.${this.$page.props.user.id}`)
+                .notification((notification)=> {
+                    let newUnreadNotifications = {
+                        data: {
+                            info: {
+                                avatar: notification.info.avatar,
+                                message: notification.info.message,
+                                link: notification.info.link,
+                                sent: notification.info.sent,
+                            }
+                        },
+                        id: notification.id
+                    }
+                    this.unreadNotifications.push(newUnreadNotifications)
+                    this.notifications.push(newUnreadNotifications)
+                })
+        }
     }
 }
 </script>
@@ -20,6 +43,7 @@ import JetNavLink from "@/Components/NavLink.vue";
 import JetResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import SideBar from "@/Components/SideBar.vue";
 import Notifications from '../Components/Notifications.vue';
+import Echo from "laravel-echo";
 
 defineProps({
     title: String,

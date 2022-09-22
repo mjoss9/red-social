@@ -19,6 +19,9 @@ In diferents terminals:
 ### Notificaciton
     php artisan notifications:table
 
+
+## If you forget commands:
+    php artisan
 ## Package used
 ### SweetAlert2
     https://sweetalert2.github.io/#download

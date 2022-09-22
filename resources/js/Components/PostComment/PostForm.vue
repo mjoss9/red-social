@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="method" class="w-full">
+    <form @submit.prevent="method" v-on:keyup.enter="method" class="w-full">
         <div>
             <textarea
                 name="post"
