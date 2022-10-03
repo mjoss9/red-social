@@ -49,8 +49,8 @@ export default {
     },
 };
 </script>
-<template>
-    <aside class="flex flex-col bg-white shadow py-2 w-full sm:w-1/3 lg:w-1/4 fixed sm:relative">
+<template> 
+    <aside class="sm:h-screen bg-white shadow py-2 w-full sm:w-1/3 lg:w-1/4 fixed sm:top-20 sm:sticky">
         <div class="mx-6 sm:mx-0">
             <div class="max-w-7xl sm:px-6">
                 <div class="flex justify-between">
