@@ -65,7 +65,7 @@ const logout = () => {
     <div>
         <Head :title="title"></Head>
 
-        <div class="flex flex-col min-h-screen bg-gray-100">
+        <div class="flex flex-col min-h-screen">
             <nav class="bg-white border-b border-gray-100 w-full fixed z-20">
                 <div class="mx-5 sm:mx-10 py-2 flex content-center justify-between">
                     <img
@@ -90,7 +90,7 @@ const logout = () => {
                 <!-- Page Sidebar -->
                 <side-bar></side-bar>
                 <!-- Page Content -->
-                <main class="bg-gray-200 shadow rounded my-20 py-6 px-4 w-full sm:w-2/3 sm:mx-2 sm:my-3 md:mx-4 md:px-10 lg:mx-auto">
+                <main class="shadow rounded my-20 py-6 px-4 w-full sm:w-2/3 sm:mx-2 sm:my-3 md:mx-4 md:px-10 lg:mx-auto">
                     <slot></slot>
                 </main>
             </div>

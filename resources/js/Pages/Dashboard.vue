@@ -1,7 +1,7 @@
 <template>
     <pages-layout title="Dashboard">
         <template #title>
-            <div class="flex justify-between items-center w-full">
+            <!-- <div class="flex justify-between items-center w-full">
                 <h2
                     class="flex items-end font-semibold text-xl text-gray-800 leading-tight"
                 >
@@ -12,7 +12,7 @@
                     />
                     <span class="capitalize ml-3"> Dashboard </span>
                 </h2>
-            </div>
+            </div> -->
         </template>
         <post-form :method="submit" :form="form" :text="'Post'"></post-form>
         <suggestion-block :suggestions="suggestions"></suggestion-block>
