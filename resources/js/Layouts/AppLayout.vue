@@ -86,7 +86,7 @@ const logout = () => {
                 
             </nav>
 
-            <div class="flex flex-wrap pt-14 sm:pt-20 sm:flex-nowrap">
+            <div class="flex flex-wrap pt-14 sm:pt-20 sm:flex-nowrap bg-gray-100">
                 <!-- Page Sidebar -->
                 <side-bar></side-bar>
                 <!-- Page Content -->

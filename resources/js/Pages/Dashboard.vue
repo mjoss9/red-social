@@ -14,10 +14,15 @@
                 </h2>
             </div> -->
         </template>
-        <post-form :method="submit" :form="form" :text="'Post'"></post-form>
-        <suggestion-block :suggestions="suggestions"></suggestion-block>
+        <div class="bg-white p-8 rounded-lg">
+            <post-form :method="submit" :form="form" :text="'Post'"></post-form>
+        </div>
+        <!-- <suggestion-block :suggestions="suggestions"></suggestion-block> -->
         <infinite-scroll @loadMore="loadMorePosts">
-            <combined-post :posts="allPosts.data" :pagination="pagination"></combined-post>
+            <combined-post
+                :posts="allPosts.data"
+                :pagination="pagination"
+            ></combined-post>
         </infinite-scroll>
     </pages-layout>
 </template>
@@ -38,13 +43,13 @@ export default {
                 user_id: this.$page.props.user.id,
                 body: this.body,
             }),
-            allPosts: this.combinedPost
+            allPosts: this.combinedPost,
         };
     },
     computed: {
-        pagination(){
-            return this.allPosts = this.combinedPost
-        }
+        pagination() {
+            return (this.allPosts = this.combinedPost);
+        },
     },
     methods: {
         submit() {
@@ -59,9 +64,9 @@ export default {
                 },
             });
         },
-        loadMorePosts(){
-            if(!this.allPosts.next_page_url) {
-                return
+        loadMorePosts() {
+            if (!this.allPosts.next_page_url) {
+                return;
             }
             return axios.get(this.allPosts.next_page_url).then((resp) => {
                 this.allPosts = {
@@ -69,7 +74,7 @@ export default {
                     data: [...this.allPosts.data, ...resp.data.data],
                 };
             });
-        }
+        },
     },
 };
 </script>

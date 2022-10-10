@@ -1,13 +1,13 @@
 <template>
     <div class="flex items-center">
+        <form @submit.prevent="method">
+            <button type="submit" class="focus:outline-none rounded-full p-1 bg-blue-600 mr-2">
+                <icon name="like" class="w-4 h-4 ml-1 fill-current text-gray-200"></icon>
+            </button>
+        </form>
         <span>
             {{ item.liked }}
         </span>
-        <form @submit.prevent="method">
-            <button type="submit" class="focus:outline-none">
-                <icon name="like" class="w-5 h-5 ml-1 fill-current hover:text-blue-600"></icon>
-            </button>
-        </form>
     </div>
 </template>
 <script setup>
