@@ -2,7 +2,7 @@
     <div class="mt-5 py-5 space-x-3 bg-white sm:px-8 px-4 rounded-lg">
         <div class="flex justify-between">
             <div class="flex">
-                <div class="mr-4 flex-shrink-0c self-center">
+                <div class="mr-4 flex-shrink-0 self-center">
                     <Link :href="route('profiles.show', post.user.username)">
                         <img
                             class="h-8 w-8 rounded-full object-cover"
@@ -12,11 +12,11 @@
                     </Link>
                 </div>
                 <div>
-                    <h4 class="font-medium text-gray-900">
+                    <h4 class="font-bold text-gray-900">
                         <Link
                             :href="route('profiles.show', post.user.username)"
                         >
-                            {{ post.user.username }}
+                            {{ post.user.name }}
                         </Link>
                     </h4>
                     <span class="text-gray-500 text-sm">{{
@@ -58,41 +58,41 @@
                 </h2>
             </div>
             <like :item="post" :method="submitLike"></like>
-            <div class="flex justify-between border-y border-gray-300 p-5 my-3">
+            <div class="flex justify-between border-y border-gray-300 p-3 sm:p-5 my-3">
                 <div class="flex ml-3">
                     <button @click="submitLike">
                         <div class="flex text-gray-600">
-                            <icon name="like" class="w-5 h-5 ml-1 fill-current"></icon>
-                            <span>Me gusta</span>
+                            <icon name="like" class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"></icon>
+                            <span class="hidden sm:block">Me gusta</span>
                         </div>
                     </button>
                 </div>
                 <div class="flex ml-3">
                     <button @click="submitDisLike">
                         <div class="flex text-gray-600">
-                            <icon name="dislike" class="w-5 h-5 ml-1 fill-current"></icon>
-                            <span>No me gusta</span>
+                            <icon name="dislike" class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"></icon>
+                            <span class="hidden sm:block">No me gusta</span>
                         </div>
                     </button>
                 </div>
                 <div>
-                    <button>
+                    <button @click="openComments = !openComments">
                         <div class="flex text-gray-600">
-                            <icon name="comment" class="w-5 h-5 ml-1 fill-current"></icon>
-                            <span>Comentar</span>
+                            <icon name="comment" class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"></icon>
+                            <span class="hidden sm:block">Comentar</span>
                         </div>
                     </button>
                 </div>
             </div>
-            <div>
+            <div v-show="openComments">
+                <combined-comments
+                    :comments="post.comments"
+                ></combined-comments>
                 <post-form
                     :method="submit"
                     :form="form"
                     :text="'Comment'"
                 ></post-form>
-                <combined-comments
-                    :comments="post.comments"
-                ></combined-comments>
             </div>
         </div>
     </div>
@@ -116,6 +116,7 @@ export default {
     data() {
         return {
             openMenu: false,
+            openComments: false,
             form: this.$inertia.form({
                 body: this.body,
                 user_id: this.post.user_id,
