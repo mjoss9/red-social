@@ -114,7 +114,7 @@ export default {
                                 </template>
                                 <template #content>
                                     <!-- Account Management -->
-                                    <JetDropdownLink :href="route('profile.show',this.$page.props.user.username)">
+                                    <JetDropdownLink :href="route('profiles.show',this.$page.props.user.username)">
                                         <div class="flex">
                                             <img
                                                 :src="this.$page.props.user.profile_photo_url"

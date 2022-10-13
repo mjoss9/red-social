@@ -47,6 +47,16 @@
                                 class="w-8 h-8 fill-current"
                             ></icon>
                         </button>
+                        <button
+                            type="submit"
+                            class="flex justify-between items-center w-full focus:outline-none"
+                        >
+                            Denunciar
+                            <icon
+                                name="trash"
+                                class="w-8 h-8 fill-current"
+                            ></icon>
+                        </button>
                     </form>
                 </div>
             </div>
