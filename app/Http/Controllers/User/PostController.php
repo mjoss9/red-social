@@ -39,6 +39,12 @@ class PostController extends Controller
      */
     public function store(PostFormRequest $request)
     {
+        $filename=null;
+        if($request->file('photo')){
+            $file=$request->file('photo');
+            $filename=time().".".$file->getClientOriginalExtension();
+            $request->file('photo')->storeAs('public/assets',$filename);
+        }
         $data = $request->only(['body', 'user_id', 'parent_id']);
         if((auth()->user()->id != $data['user_id']) && (!auth()->user()->is_friend_with($request->user_id))) {
             return back()->withErrors(['message'=>'Deben ser amigos primero!']);
@@ -48,18 +54,29 @@ class PostController extends Controller
                 'body'=> $data['body'],
                 'parent_id'=> $data['user_id'],
                 'user_id'=>auth()->user()->id,
+                'image_path'=>(($request->file('photo'))?'assets/'.$filename:$filename),
+
             ]);
+            if($request->file('photo')){
+                $request->file('photo')->storeAs('public/assets',$filename);
+            }
+
             $user = User::where('id', $data['user_id'])->first();
             event(new SomeonePostedEvent($user, auth()->user()));
             return back();
         }
         if((auth()->user()->id = $data['user_id'])) {
             auth()->user()->posts()->create([
-                'body'=> $data['body']
+                'body'=> $data['body'],
+                'image_path'=>(($request->file('photo'))?'assets/'.$filename:$filename),
+
             ]);
+            if($request->file('photo')){
+                $request->file('photo')->storeAs('public/assets',$filename);
+            }
             return back();
         }
-        
+
     }
 
     /**

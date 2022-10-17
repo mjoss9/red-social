@@ -42,6 +42,7 @@ export default {
             form: this.$inertia.form({
                 user_id: this.$page.props.user.id,
                 body: this.body,
+                photo: this.photo,
             }),
             allPosts: this.combinedPost,
         };

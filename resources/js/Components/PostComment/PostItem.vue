@@ -67,6 +67,12 @@
                     {{ post.body }}
                 </h2>
             </div>
+            <div v-if="post.image_path">
+                    <img :src="'http://localhost:8000/storage/'+post.image_path" :alt="post.image_path" >
+                    <!-- C:\xampp\htdocs\social-network\storage\app\public\subimpost
+                    http://localhost:8000/storage/app/public/
+                    -->
+                </div>
             <like :item="post" :method="submitLike"></like>
             <div class="flex justify-between border-y border-gray-300 p-3 sm:p-5 my-3">
                 <div class="flex ml-3">
