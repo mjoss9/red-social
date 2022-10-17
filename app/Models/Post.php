@@ -12,18 +12,18 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'parent_id', 'body'];
+    protected $fillable = ['user_id', 'parent_id', 'body','image_path'];
 
     /**
      * The relationships that should always be loaded
-     * 
+     *
      * @var array
      */
     protected $with = ['user', 'comments'];
 
     /**
      * The relationships that should always be loaded
-     * 
+     *
      * @var array
      */
     protected $appends = [
