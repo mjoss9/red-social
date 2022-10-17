@@ -55,6 +55,7 @@ class PostController extends Controller
                 'parent_id'=> $data['user_id'],
                 'user_id'=>auth()->user()->id,
                 'image_path'=>(($request->file('photo'))?'assets/'.$filename:$filename),
+                'file_type'=>(($request->file('photo'))?$file->getClientOriginalExtension():null),
 
             ]);
             if($request->file('photo')){
@@ -69,6 +70,8 @@ class PostController extends Controller
             auth()->user()->posts()->create([
                 'body'=> $data['body'],
                 'image_path'=>(($request->file('photo'))?'assets/'.$filename:$filename),
+                'file_type'=>(($request->file('photo'))?$file->getClientOriginalExtension():null),
+
 
             ]);
             if($request->file('photo')){
