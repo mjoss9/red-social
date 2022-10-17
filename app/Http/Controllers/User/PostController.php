@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Events\SomeonePostedEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -130,10 +131,17 @@ class PostController extends Controller
             return back()->withErrors(['message'=>'No puedes borrar este post!']);
         }
         if((auth()->user()->id != $post->user_id) && (auth()->user()->id = $post->parent_id)) {
-            $post->delete();
+            if($post->image_path){
+                Storage::delete([$post->image_path]);
+                }
+                  $post->delete();
             return back();
         }
         if((auth()->user()->id = $post->user_id)) {
+            if($post->image_path){
+            Storage::delete(['public/'.$post->image_path]);
+            }
+            //dd($post->image_path);
             $post->delete();
             return back();
         }
