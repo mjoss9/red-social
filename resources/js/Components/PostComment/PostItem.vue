@@ -34,12 +34,12 @@
                 </button>
                 <div
                     v-if="openMenu"
-                    class="bg-gray-300 text-sm absolute w-48 right-0 text-gray-700 shadow-lg rounded-md px-4 py-2 hover:bg-gray-700 hover:text-gray-300 transition duration-150 ease-in-out"
+                    class="bg-gray-200 text-sm absolute w-48 right-0 text-gray-700 shadow-lg rounded-md p-0 ease-in-out"
                 >
                     <form @submit.prevent="deletePost">
                         <button
                             type="submit"
-                            class="flex justify-between items-center w-full focus:outline-none"
+                            class="rounded-md py-2 px-4 flex justify-between items-center w-full focus:outline-none hover:bg-gray-700 hover:text-gray-300 transition duration-150"
                         >
                             Delete Post
                             <icon
@@ -47,14 +47,16 @@
                                 class="w-8 h-8 fill-current"
                             ></icon>
                         </button>
+                    </form>
+                    <form>
                         <button
                             type="submit"
-                            class="flex justify-between items-center w-full focus:outline-none"
+                            class="rounded-md py-2 px-4 flex justify-between items-center w-full focus:outline-none hover:bg-gray-700 hover:text-gray-300 transition duration-150"
                         >
                             Denunciar
                             <icon
-                                name="trash"
-                                class="w-8 h-8 fill-current"
+                                name="report"
+                                class="w-8 h-8 fill-current text-red-600"
                             ></icon>
                         </button>
                     </form>
