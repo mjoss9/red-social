@@ -8,7 +8,7 @@
             />
         </div>
         <div class="min-w-0 flex-1">
-            <form @submit.prevent="method" v-on:keyup.enter="method">
+            <form @submit.prevent="method" v-on:keyup.enter="method" enctype="multipart/form-data">
                 <div
                     class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500"
                 >
@@ -21,6 +21,9 @@
                         v-model="form.body"
                     ></textarea>
                 </div>
+                <div>
+            <input type="file" @input="form.photo = $event.target.files[0]" />
+        </div>
                 <div class="pt-2 flex justify-between">
                     <div class="flex items-center space-x-5">
                         <div class="flow-root">

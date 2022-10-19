@@ -607,7 +607,6 @@ class ComposerStaticInitba653a06064ed779ec61fc66af5442d4
         'App\\Models\\Message' => __DIR__ . '/../..' . '/app/Models/Message.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
-        'App\\Models\\Report' => __DIR__ . '/../..' . '/app/Models/Report.php',
         'App\\Models\\Room' => __DIR__ . '/../..' . '/app/Models/Room.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Notifications\\FriendRequestAccepted' => __DIR__ . '/../..' . '/app/Notifications/FriendRequestAccepted.php',

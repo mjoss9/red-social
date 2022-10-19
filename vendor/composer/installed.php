@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'aa02340fb8e010b0c976982bdf5bec3206f50abf',
+        'pretty_version' => 'dev-auxb',
+        'version' => 'dev-auxb',
+        'reference' => '461acea00855de9e3d79092e600b6578a33db889',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -428,9 +428,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'aa02340fb8e010b0c976982bdf5bec3206f50abf',
+            'pretty_version' => 'dev-auxb',
+            'version' => 'dev-auxb',
+            'reference' => '461acea00855de9e3d79092e600b6578a33db889',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -632,9 +632,9 @@
             'dev_requirement' => false,
         ),
         'paragonie/sodium_compat' => array(
-            'pretty_version' => 'v1.19.0',
-            'version' => '1.19.0.0',
-            'reference' => 'cb15e403ecbe6a6cc515f855c310eb6b1872a933',
+            'pretty_version' => 'v1.18.0',
+            'version' => '1.18.0.0',
+            'reference' => '906e0b925895d3a5941eda25f371fbafb3cbc22f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../paragonie/sodium_compat',
             'aliases' => array(),

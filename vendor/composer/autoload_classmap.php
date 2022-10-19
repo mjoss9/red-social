@@ -16,6 +16,7 @@ return array(
     'App\\Events\\FriendRequestAcceptedEvent' => $baseDir . '/app/Events/FriendRequestAcceptedEvent.php',
     'App\\Events\\FriendRequestReceivedEvent' => $baseDir . '/app/Events/FriendRequestReceivedEvent.php',
     'App\\Events\\NewChatMessageEvent' => $baseDir . '/app/Events/NewChatMessageEvent.php',
+    'App\\Events\\NewChatMessageEvent' => $baseDir . '/app/Events/NewChatMessageEvent.php',
     'App\\Events\\SomeonePostedEvent' => $baseDir . '/app/Events/SomeonePostedEvent.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',

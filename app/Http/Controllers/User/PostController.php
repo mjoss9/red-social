@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Events\SomeonePostedEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -39,6 +40,12 @@ class PostController extends Controller
      */
     public function store(PostFormRequest $request)
     {
+        $filename=null;
+        if($request->file('photo')){
+            $file=$request->file('photo');
+            $filename=time().".".$file->getClientOriginalExtension();
+            $request->file('photo')->storeAs('public/assets',$filename);
+        }
         $data = $request->only(['body', 'user_id', 'parent_id']);
         if((auth()->user()->id != $data['user_id']) && (!auth()->user()->is_friend_with($request->user_id))) {
             return back()->withErrors(['message'=>'Deben ser amigos primero!']);
@@ -48,18 +55,32 @@ class PostController extends Controller
                 'body'=> $data['body'],
                 'parent_id'=> $data['user_id'],
                 'user_id'=>auth()->user()->id,
+                'image_path'=>(($request->file('photo'))?'assets/'.$filename:$filename),
+                'file_type'=>(($request->file('photo'))?$file->getClientOriginalExtension():null),
+
             ]);
+            if($request->file('photo')){
+                $request->file('photo')->storeAs('public/assets',$filename);
+            }
+
             $user = User::where('id', $data['user_id'])->first();
             event(new SomeonePostedEvent($user, auth()->user()));
             return back();
         }
         if((auth()->user()->id = $data['user_id'])) {
             auth()->user()->posts()->create([
-                'body'=> $data['body']
+                'body'=> $data['body'],
+                'image_path'=>(($request->file('photo'))?'assets/'.$filename:$filename),
+                'file_type'=>(($request->file('photo'))?$file->getClientOriginalExtension():null),
+
+
             ]);
+            if($request->file('photo')){
+                $request->file('photo')->storeAs('public/assets',$filename);
+            }
             return back();
         }
-        
+
     }
 
     /**
@@ -110,10 +131,17 @@ class PostController extends Controller
             return back()->withErrors(['message'=>'No puedes borrar este post!']);
         }
         if((auth()->user()->id != $post->user_id) && (auth()->user()->id = $post->parent_id)) {
-            $post->delete();
+            if($post->image_path){
+                Storage::delete([$post->image_path]);
+                }
+                  $post->delete();
             return back();
         }
         if((auth()->user()->id = $post->user_id)) {
+            if($post->image_path){
+            Storage::delete(['public/'.$post->image_path]);
+            }
+            //dd($post->image_path);
             $post->delete();
             return back();
         }
