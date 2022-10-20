@@ -66,13 +66,13 @@
                 <h2>
                     {{ post.body }}
                 </h2>
-            </div>
+           </div>
             <div v-if="post.image_path">
                     <img v-if="post.file_type==='jpg'" :src="'http://localhost:8000/storage/'+post.image_path" :alt="post.image_path" >
                     <!-- C:\xampp\htdocs\social-network\storage\app\public\subimpost
                     http://localhost:8000/storage/app/public/
                     -->
-                    <iframe v-if="post.file_type==='pdf'" :src="'http://localhost:8000/storage/'+post.image_path" class="flex justify-between items-center w-full" frameborder="1"></iframe>
+                    <iframe v-if="post.file_type==='pdf'" :src="'http://localhost:8000/storage/'+post.image_path" class="flex justify-between items-center w-full" frameborder="1" height="300"></iframe>
 
                     <iframe v-if="post.file_type==='mp4'" :src="'http://localhost:8000/storage/'+post.image_path" class="flex justify-between items-center w-full" height="400" sandbox></iframe>
                 </div>
@@ -197,6 +197,7 @@ export default {
                 }
             );
         },
-    },
-};
+}
+}
+
 </script>

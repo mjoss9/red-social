@@ -54,6 +54,7 @@ return array(
     'App\\Models\\Profile' => $baseDir . '/app/Models/Profile.php',
     'App\\Models\\Room' => $baseDir . '/app/Models/Room.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\materia' => $baseDir . '/app/Models/materia.php',
     'App\\Notifications\\FriendRequestAccepted' => $baseDir . '/app/Notifications/FriendRequestAccepted.php',
     'App\\Notifications\\FriendRequestReceived' => $baseDir . '/app/Notifications/FriendRequestReceived.php',
     'App\\Notifications\\SomeonePosted' => $baseDir . '/app/Notifications/SomeonePosted.php',

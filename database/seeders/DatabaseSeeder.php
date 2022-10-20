@@ -14,13 +14,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(21)->hasProfile()->hasPosts(5)->create();
+         \App\Models\User::factory(21)->hasProfile()->hasPosts(5)->create();
         // \App\Models\Comment::factory(2)->create();
-        \App\Models\Room::factory(5)->create();
-        
+        //\App\Models\Room::factory(5)->create();
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
+        //     'ci'=> rand(0,10000000),
         // ]);
+        // \App\Models\Materia::factory()->create([
+           // 'sigla' => 'ETN 821',
+            //'nombre' => 'Sistemas Digitales II',
+            //'descripcion'=> 'Descripcion de materia'
+        //],
+
+
+    //);
+
+
     }
 }
