@@ -70,36 +70,64 @@
                 </h2>
             </div>
             <div v-if="post.image_path">
-                    <img v-if="post.file_type==='jpg'" :src="'http://localhost:8000/storage/'+post.image_path" :alt="post.image_path" >
-                    <!-- C:\xampp\htdocs\social-network\storage\app\public\subimpost
+                <img
+                    v-if="post.file_type === 'jpg' || post.file_type === 'webp' || post.file_type === 'jpeg'"
+                    :src="'http://localhost:8000/storage/' + post.image_path"
+                    :alt="post.image_path"
+                    class="sm:max-w-md h-auto mx-auto my-3 object-cover"
+                />
+                <!-- C:\xampp\htdocs\social-network\storage\app\public\subimpost
                     http://localhost:8000/storage/app/public/
                     -->
-                    <iframe v-if="post.file_type==='pdf'" :src="'http://localhost:8000/storage/'+post.image_path" class="flex justify-between items-center w-full" frameborder="1"></iframe>
+                <iframe
+                    v-if="post.file_type === 'pdf'"
+                    :src="'http://localhost:8000/storage/' + post.image_path"
+                    class="w-full h-80 pdf"
+                    frameborder="1"
+                ></iframe>
 
-                    <iframe v-if="post.file_type==='mp4'" :src="'http://localhost:8000/storage/'+post.image_path" class="flex justify-between items-center w-full" height="400" sandbox></iframe>
-                </div>
-            <like :item="post" :method="submitLike"></like>
-            <div class="flex justify-between border-y border-gray-300 p-3 sm:p-5 my-3">
-                <div class="flex ml-3">
+                <iframe
+                    v-if="post.file_type === 'mp4'"
+                    :src="'http://localhost:8000/storage/' + post.image_path"
+                    class="flex justify-between items-center w-full"
+                    height="400"
+                    sandbox
+                ></iframe>
+            </div>
+            <div class="flex ">
+                <like :item="post" :method="submitLike"></like>
+                <dislike :item="post" :method="submitLike"></dislike>
+            </div>
+            <div class="flex justify-between border-y border-gray-300">
+                <div class="flex ml-3 p-3 sm:p-5 hover:bg-slate-200 rounded">
                     <button @click="submitLike">
                         <div class="flex text-gray-600">
-                            <icon name="like" class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"></icon>
+                            <icon
+                                name="like"
+                                class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"
+                            ></icon>
                             <span class="hidden sm:block">Me gusta</span>
                         </div>
                     </button>
                 </div>
-                <div class="flex ml-3">
+                <div class="flex ml-3 p-3 sm:p-5 hover:bg-slate-200 rounded">
                     <button @click="submitDisLike">
                         <div class="flex text-gray-600">
-                            <icon name="dislike" class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"></icon>
+                            <icon
+                                name="dislike"
+                                class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"
+                            ></icon>
                             <span class="hidden sm:block">No me gusta</span>
                         </div>
                     </button>
                 </div>
-                <div>
+                <div class="flex p-3 sm:p-5 ml-3 hover:bg-slate-200 rounded">
                     <button @click="openComments = !openComments">
                         <div class="flex text-gray-600">
-                            <icon name="comment" class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"></icon>
+                            <icon
+                                name="comment"
+                                class="w-7 h-7 sm:w-5 sm:h-5 ml-1 fill-current"
+                            ></icon>
                             <span class="hidden sm:block">Comentar</span>
                         </div>
                     </button>

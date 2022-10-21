@@ -3,7 +3,7 @@
         <form @submit.prevent="method">
             <button
                 type="submit"
-                class="focus:outline-none rounded-full p-1 bg-blue-600 mr-2"
+                class="focus:outline-none rounded-full p-1 bg-red-800 mr-2"
             >
                 <icon
                     name="like"

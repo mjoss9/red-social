@@ -8,7 +8,11 @@
             />
         </div>
         <div class="min-w-0 flex-1">
-            <form @submit.prevent="method" v-on:keyup.enter="method" enctype="multipart/form-data">
+            <form
+                @submit.prevent="method"
+                v-on:keyup.enter="method"
+                enctype="multipart/form-data"
+            >
                 <div
                     class="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500"
                 >
@@ -21,13 +25,10 @@
                         v-model="form.body"
                     ></textarea>
                 </div>
-                <div>
-            <input type="file" @input="form.photo = $event.target.files[0]" />
-        </div>
                 <div class="pt-2 flex justify-between">
                     <div class="flex items-center space-x-5">
                         <div class="flow-root">
-                            <button
+                            <label
                                 type="button"
                                 class="-m-2 w-10 h-10 rounded-full inline-flex items-center justify-center text-gray-400 hover:text-gray-500"
                             >
@@ -35,8 +36,15 @@
                                     name="paper-clip"
                                     class="w-6 h-6 fill-current"
                                 ></icon>
-                                <span class="sr-only">Agrega un archivo</span>
-                            </button>
+                                <input
+                                    type="file"
+                                    @input="form.photo = $event.target.files[0]"
+                                    style="display: none"
+                                />
+                            </label>
+                            <div v-if="form.photo">
+                                <p class="text-xs">Archivo cargado correctamente!</p>
+                            </div>
                         </div>
                         <div>
                             <InputError
