@@ -30,8 +30,9 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
+
 // FOR TESTING
 
-Pusher.log = function(message) {
-    window.console.log(message)
-}
+// Pusher.log = function(message) {
+//     window.console.log(message)
+// }

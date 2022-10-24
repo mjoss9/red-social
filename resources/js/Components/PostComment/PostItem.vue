@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5 py-5 space-x-3 bg-white sm:px-8 px-4 rounded-lg">
+    <div class="mt-5 py-5 space-x-3 bg-white sm:px-8 px-4 rounded-lg" v-show="post.reported < 5">
         <div class="flex justify-between">
             <div class="flex">
                 <div class="mr-4 flex-shrink-0 self-center">
@@ -25,6 +25,19 @@
                 </div>
             </div>
             <div class="relative">
+                <icon
+                    name="report"
+                    class="w-8 h-8 fill-current text-yellow-500"
+                    v-show="post.reported > 0"
+                    @mouseover="informationHover = true"
+                    @mouseleave="informationHover = false"
+                ></icon>
+                <div
+                    v-show="informationHover"
+                    class=" text-sm absolute w-40 right-10 top-0 text-gray-700 rounded-md p-0 ease-in-out"
+                >
+                    El post ha sido reportado
+                </div>
                 <button
                     type="button"
                     class="focus:outline-none"
@@ -34,32 +47,21 @@
                 </button>
                 <div
                     v-if="openMenu"
-                    class="bg-gray-200 text-sm absolute w-48 right-0 text-gray-700 shadow-lg rounded-md p-0 ease-in-out"
+                    class="bg-gray-50 text-sm absolute w-48 right-0 text-gray-700 shadow-lg rounded-md p-0 ease-in-out"
                 >
                     <form @submit.prevent="deletePost">
                         <button
                             type="submit"
                             class="rounded-md py-2 px-4 flex justify-between items-center w-full focus:outline-none hover:bg-gray-700 hover:text-gray-300 transition duration-150"
                         >
-                            Delete Post
+                            Eliminar post
                             <icon
                                 name="trash"
-                                class="w-8 h-8 fill-current"
+                                class="w-5 h-5 fill-current"
                             ></icon>
                         </button>
                     </form>
-                    <form>
-                        <button
-                            type="submit"
-                            class="rounded-md py-2 px-4 flex justify-between items-center w-full focus:outline-none hover:bg-gray-700 hover:text-gray-300 transition duration-150"
-                        >
-                            Denunciar
-                            <icon
-                                name="report"
-                                class="w-8 h-8 fill-current text-red-600"
-                            ></icon>
-                        </button>
-                    </form>
+                    <Report :item="post" :method="submitReport"></Report>
                 </div>
             </div>
         </div>
@@ -98,7 +100,7 @@
                 <like :item="post" :method="submitLike"></like>
                 <dislike :item="post" :method="submitLike"></dislike>
             </div>
-            <div class="flex justify-between border-y border-gray-300">
+            <div class="flex justify-between border-y border-gray-300" v-show="post.reported < 1">
                 <div class="flex ml-3 p-3 sm:p-5 hover:bg-slate-200 rounded">
                     <button @click="submitLike">
                         <div class="flex text-gray-600">
@@ -151,6 +153,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import moment from "moment";
 import Like from "./Likes/Like.vue";
 import Dislike from "./Likes/Dislike.vue";
+import Report from "./Reports/Report.vue";
 import CombinedComments from "./CombinedComments.vue";
 import PostForm from "./PostForm.vue";
 
@@ -165,6 +168,7 @@ export default {
     data() {
         return {
             openMenu: false,
+            informationHover: false,
             openComments: false,
             form: this.$inertia.form({
                 body: this.body,
@@ -177,6 +181,9 @@ export default {
                 userPost: this.post,
             }),
             dislikeForm: this.$inertia.form({
+                userPost: this.post,
+            }),
+            reportForm: this.$inertia.form({
                 userPost: this.post,
             }),
         };
@@ -226,6 +233,17 @@ export default {
                     onSuccess: () => {},
                 }
             );
+        },
+        submitReport() {
+            this.reportForm.post(this.route("post-report.store", this.post), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    Toast.fire({
+                        icon: "success",
+                        title: "El post ha sido reportado",
+                    });
+                },
+            });
         },
     },
 };

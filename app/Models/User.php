@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Traits\Friendable;
 use App\Traits\Likeable;
+use App\Traits\Reportable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,6 +19,7 @@ class User extends Authenticatable
     use HasFactory;
     use HasProfilePhoto;
     use Likeable;
+    use Reportable;
     use Friendable;
     use Notifiable;
     use TwoFactorAuthenticatable;

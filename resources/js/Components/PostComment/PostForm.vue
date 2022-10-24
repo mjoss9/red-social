@@ -27,10 +27,10 @@
                 </div>
                 <div class="pt-2 flex justify-between">
                     <div class="flex items-center space-x-5">
-                        <div class="flow-root">
+                        <div class="inline-flex items-center">
                             <label
                                 type="button"
-                                class="-m-2 w-10 h-10 rounded-full inline-flex items-center justify-center text-gray-400 hover:text-gray-500"
+                                class="-m-2 w-10 h-10 mr-5 rounded-full inline-flex items-center justify-center text-gray-400 hover:text-gray-500"
                             >
                                 <icon
                                     name="paper-clip"
@@ -40,11 +40,9 @@
                                     type="file"
                                     @input="form.photo = $event.target.files[0]"
                                     style="display: none"
+                                    v-on:change="close = !close"
                                 />
                             </label>
-                            <div v-if="form.photo">
-                                <p class="text-xs">Archivo cargado correctamente!</p>
-                            </div>
                         </div>
                         <div>
                             <InputError
@@ -62,6 +60,7 @@
                             class="text-xs"
                             :class="{ 'opacity-25': form.processing }"
                             :disable="form.processing"
+                            v-on:click="close = !close"
                         >
                             <fingerprint-spinner
                                 :animation-duration="1500"
@@ -72,6 +71,13 @@
                             <span v-else>{{ text }}</span>
                         </blue-button>
                     </div>
+                </div>
+                <div
+                    class="alert bg-green-100 rounded-lg py-2 px-6 my-2 text-xs text-green-800 inline-flex items-center sm:w-3/4 w-full"
+                    role="alert"
+                    v-show="close"
+                >
+                    <p>Tu archivo fue cargado correctamente!</p>
                 </div>
             </form>
         </div>
@@ -87,5 +93,10 @@ import Icon from "../Icon.vue";
 export default {
     components: { Icon },
     props: ["method", "form", "text"],
+    data() {
+        return {
+            close: false,
+        };
+    },
 };
 </script>

@@ -8,6 +8,7 @@ use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\RoomController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\PostLikeController;
+use App\Http\Controllers\User\PostReportController;
 use App\Http\Controllers\User\CommentLikeController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\WelcomeControler;
@@ -75,5 +76,10 @@ Route::middleware([
         Route::get('/{room:slug}', [RoomController::class, 'show'])->name('show');
         Route::post('/{room:slug}', [RoomController::class, 'update'])->name('update');
         Route::post('/{room:slug}/messages', [RoomController::class, 'store'])->name('store');
+    });
+    // Report post
+    Route::prefix('post-report')->name('post-report.')->group(function(){
+        Route::post('/{post}', [PostReportController::class, 'store'])->name('store');
+        Route::delete('/{post}', [PostReportController::class, 'destroy'])->name('destroy');
     });
 });

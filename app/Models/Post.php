@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Like;
+use App\Models\Report;
 use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,7 @@ class Post extends Model
      * @var array
      */
     protected $appends = [
-        'liked', 'disliked'
+        'liked', 'disliked', 'reported'
     ];
 
     public function getLikedAttribute() {
@@ -41,6 +42,13 @@ class Post extends Model
         return $this->likes()->where('dislike', 1)
             ->where('likeable_id', $this->id)
             ->where('likeable_type', get_class($this))
+            ->count();
+    }
+
+    public function getReportedAttribute() {
+        return $this->reports()->where('report',1)
+            ->where('reportable_id', $this->id)
+            ->where('reportable_type', get_class($this))
             ->count();
     }
 
@@ -59,5 +67,9 @@ class Post extends Model
 
     public function comments() {
         return $this->hasMany(Comment::class);
+    }
+
+    public function reports() {
+        return $this->morphMany(Report::class, 'reportable');
     }
 }
