@@ -30,17 +30,17 @@ export default {
                     icon: "user-edit",
                 },
                 {
-                    name: "Friends",
+                    name: "Amigos",
                     route: route("friends.index"),
                     icon: "user-friends",
                 },
                 {
-                    name: "Members",
+                    name: "Miembros",
                     route: route("members.index"),
                     icon: "users",
                 },
                 {
-                    name: "Chat Rooms",
+                    name: "Forums",
                     route: route("chat-rooms.index"),
                     icon: "comments",
                 },
@@ -133,7 +133,7 @@ export default {
                                     <!-- Authentication -->
                                     <form @submit.prevent="logout">
                                         <JetDropdownLink as="button">
-                                            Log Out
+                                            Salir
                                         </JetDropdownLink>
                                     </form>
                                 </template>
@@ -171,7 +171,7 @@ export default {
                                         :href="route('notifications.update')"
                                         class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-300 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
                                     >
-                                        Mark all as read
+                                        Marcar todo como leido
                                     </Link>
                                     <div class="border-t border-gray-100"></div>
 
@@ -279,7 +279,7 @@ export default {
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <JetResponsiveNavLink as="button">
-                                    Log Out
+                                    Salir
                                 </JetResponsiveNavLink>
                             </form>
                         </div>

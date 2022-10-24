@@ -4,33 +4,33 @@
             <div class="flex flex-col items-center sm:flex-row sm:justify-between">
                 <h2 class="flex items-end font-semibold text-xl text-gray-800 leading-tight">
                     <span class="underline">
-                        {{ `${$page.props.user.username}'s Friends` }}
+                        {{ `Amigos de: ${$page.props.user.username}` }}
                     </span>
                 </h2>
 
                 <span class="text-gray-800 leading-tight text-lg capitalize mt-5 sm:mt-0">
-                    Browse
+                    Buscar
                     <Link :href="route('members.index')" class="underline hover:text-green-500">
-                        members
+                        miembros
                     </Link>
                 </span>
             </div>
         </template>
         <div>
             <h3 class="font-semibold text-lg text-gray-800 leading-tight mt-5">
-                Friend Requests:
+                Solucitudes de amistad:
             </h3>
             <div v-if="requests.length <= 0">
-                <h3>You have no friend requests.</h3>
+                <h3>No tienes solicitudes de amistad</h3>
             </div>
             <user-block :items="requests"></user-block>
         </div>
         <div>
             <h3 class="font-semibold text-lg text-gray-800 leading-tight mt-5">
-                Friends:
+                Amigos:
             </h3>
             <div v-if="friends.length <= 0">
-                <h3>You have no friends yet.</h3>
+                <h3>Aun no tienes amigos</h3>
             </div>
             <user-block :items="friends"></user-block>
         </div>

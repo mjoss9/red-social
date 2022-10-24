@@ -10,15 +10,15 @@
                     <Link
                         :href="route('members.index')"
                         class="capitalize underline"
-                        >Members</Link
+                        >Miembros</Link
                     >
                 </h2>
                 <span
                     class="text-gray-800 leading-tight text-lg capitaliza mt-5 sm:mt-0"
                 >
-                    Visit your
-                    <Link href="#" class="underline hover:text-green-500"
-                        >Friends</Link
+                    Visita tus: 
+                    <Link :href="route('friends.index')" class="underline hover:text-green-500"
+                        >Amigos</Link
                     >
                 </span>
             </div>
