@@ -1,11 +1,27 @@
+# Instalar
+#### `npm install`
+#### `composer`
 
-# TO RUN THE PROJECT
-## 1. Frist open XAMMP
-## 2. Then run the following comands
-In diferents terminals:
+## Configuración de BASE DE DATOS
+En el archivo `.env` se debe colocar la siguiente variable
+#### `DB_CONNECTION=mysql`
+#### `DB_DATABASE=social-network`
+#### `QUEUE_CONNECTION=database`
+#### `MAIL_MAILER=smtp`
+#### `MAIL_HOST=smtp.mailtrap.io`
 
-    php artisan serve
-    npm run dev
+De la cuenta que se cree en mailtrap:
+#### `MAIL_USERNAME=XXXXXXX`
+#### `MAIL_PASSWORD=XXXXXXX`
+
+# Correr
+
+1. Correr XAMMP
+2. Correr los siguientes comandos en dos terminales diferentes:
+#### `php artisan serve`
+#### `npm run dev`
+
+# Notas
 ## PHP commands
 ### Create new Users
     php artisan db:seed
@@ -34,6 +50,9 @@ In diferents terminals:
     https://epic-spinners.epicmax.co/get-started
 
     npm install --save epic-spinners
+
+### Mail trap
+    https://mailtrap.io/home
 
 ## License
 
