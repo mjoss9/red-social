@@ -66,10 +66,9 @@
             </div>
         </div>
         <div>
-            <div class="my-3 text-gray-700">
-                <h2>
-                    {{ post.body }}
-                </h2>
+            <div class="my-3 text-gray-700 overflow-auto">
+                <span v-html="convertText(post.body)">
+                </span>
             </div>
             <div v-if="post.image_path">
                 <img
@@ -160,6 +159,23 @@ import PostForm from "./PostForm.vue";
 const formatDate = (date) => {
     return moment(date).fromNow();
 };
+
+function convertText(txtData) {
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    txtData = txtData.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+
+    var urlRegex =/(\b(\swww).[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    txtData = txtData.replace(urlRegex, ' <a href="$1" target="_blank">$1</a>');
+
+    var urlRegex =/(>\swww)/ig;
+    txtData = txtData.replace(urlRegex, '>www');
+
+    var urlRegex =/(\"\swww)/ig;
+    txtData = txtData.replace(urlRegex, '"http://www');
+
+    return txtData;
+}
+
 </script>
 <script>
 export default {

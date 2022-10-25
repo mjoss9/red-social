@@ -60,7 +60,7 @@
                             class="text-xs"
                             :class="{ 'opacity-25': form.processing }"
                             :disable="form.processing"
-                            v-on:click="close = !close"
+                            v-on:click="close = false"
                         >
                             <fingerprint-spinner
                                 :animation-duration="1500"

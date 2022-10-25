@@ -6,3 +6,10 @@
 .pdf{
     height: 500px;
 }
+
+span a {
+    color: blue;
+}
+span a:hover{
+    text-decoration: underline;
+}
