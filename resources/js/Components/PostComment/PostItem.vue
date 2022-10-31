@@ -142,6 +142,7 @@
                     :method="submit"
                     :form="form"
                     :text="'Comment'"
+                    class="mt-5"
                 ></post-form>
             </div>
         </div>

@@ -8,7 +8,7 @@
 }
 
 span a {
-    color: blue;
+    color: rgb(42, 141, 222);
 }
 span a:hover{
     text-decoration: underline;

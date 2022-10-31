@@ -7,7 +7,6 @@
 </template>
 <script setup>
 import CommentItem from './CommentItem.vue';
-
 </script>
 <script>
 export default {
