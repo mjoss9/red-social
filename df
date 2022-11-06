@@ -1,0 +1,64 @@
+[33m5fdaeaa[m[33m ([m[1;36mHEAD -> [m[1;32mpost-img[m[33m, [m[1;31morigin/post-img[m[33m)[m Modificando los comentarios
+[33madb02e2[m Modificando el README
+[33mf81ce5f[m Adding function to recognize URL from a string
+[33m9cf8474[m Cambiando algunos terminos a castellano
+[33mfcd12b4[m Report post
+[33mc6895b4[m Adding the dislike button
+[33m98ee68a[m Merge -> add images to the posts
+[33md2610ed[m Adding report button and controller for report
+[33me8ae6e6[m Eliminar archivos de post con el post eliminado
+[33m42d526e[m Subida archivos incluido video
+[33m713a3f0[m Subida imagen funcional
+[33m49f8cfb[m Subida 1
+[33m461acea[m[33m ([m[1;31morigin/version2[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mversion2[m[33m, [m[1;32mresume[m[33m)[m Adding vendor folder
+[33mff003a9[m Changing comments and showing when it exits
+[33medc63ab[m Adding style to the posts
+[33mcb8c09d[m Adding css to the comment component
+[33m558d0fa[m Side bar fixed
+[33m84b0b4c[m Modifing side bar and making it responsive
+[33m4d36b67[m Modifing bootstrap,js
+[33mc9a662f[m Chat rooms chat active-not workig connection to pusher
+[33mbba124e[m Chat rooms
+[33me1dd29a[m Notifications with pusher - dont work
+[33maa02340[m Fixing error to updateProfile, usePage
+[33m0f36fa2[m Notifications - friend notificaciones
+[33m93f156b[m Notifications mark as read and delete
+[33m2063c67[m Notifications events listener
+[33mb5ff1db[m Notification - posts-mailables
+[33m8f69905[m Bug of show own post on dashboard and showing friends
+[33m83810cd[m Pagination - infinite scroll
+[33mfbb0982[m User post - Profile post
+[33ma59ea07[m Likes and dislikes for comments
+[33m099e97b[m User post - user comments
+[33m774f2ec[m Fixing error is_friends_to -> is_friend_to
+[33mbaf0dc8[m Adding numbers for likes and dislikes
+[33m6c7e7eb[m Like and dislike
+[33m24f8f1f[m Adding moment js
+[33m48584a0[m Suggestions of friends
+[33m30922b4[m Post user - dashboard delete post fixing error
+[33m6b681f4[m Post form users
+[33m076fd53[m Adding the posts to the dashboard
+[33m94d51d6[m Adding new users and posts at the data base
+[33m1961e59[m Adding toast for each button
+[33m5bca69c[m Modiding README and installing sweetalert2
+[33mb90d97f[m Adding the spinner
+[33m855c0dd[m Installing epic spinners
+[33mafd4bbe[m Delete a friend
+[33m0918282[m Ignore a friend request
+[33m21a4b3b[m Accept button
+[33m1bed067[m Friend conections - ERRO:500
+[33m7aa2415[m Add friend and creating button blue component
+[33m07276d0[m Update sidebar links and using FontAwesome icons
+[33m9076b56[m User Members, showing the list of members
+[33mea22541[m Adding comands at the README
+[33md596677[m Model factories - adding new user with seed
+[33m219692c[m User profiles
+[33maad59e8[m Added SideBar component and fixing the warning costume element
+[33m211cfa7[m Changing the route for dashboard to user/dashboard
+[33m9ce6737[m Modifing the README
+[33m5d7fa05[m Working on the navbar
+[33m57e7c59[m Adding the new fields to the profile page and fixing the error in user.php
+[33m95f3626[m Adding default photo for user
+[33mc4f9458[m Fixing the error at the register page and for registered user just see the dasboard
+[33ma8ae99b[m Adding the new fields to the register page
+[33m2ac8dc2[m INIT
