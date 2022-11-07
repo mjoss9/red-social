@@ -12,6 +12,7 @@ use App\Http\Controllers\User\PostReportController;
 use App\Http\Controllers\User\CommentLikeController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\WelcomeControler;
+use App\Http\Controllers\ResumeDataController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,4 +83,16 @@ Route::middleware([
         Route::post('/{post}', [PostReportController::class, 'store'])->name('store');
         Route::delete('/{post}', [PostReportController::class, 'destroy'])->name('destroy');
     });
+
+    // Datos Personales-> ResumeData
+    // Titulo Academico -> AcademicTitle
+    // Curso y Seminario -> SeminarCourse
+    // Poduccion Intelectual-> IntellectualProduction
+    // Experiencia Docente -> TeachingExperience
+
+    // -------- Datos Personales-> ResumeData --------
+
+
 });
+Route::post('resumedata', [ResumeDataController::class, 'store'])->name('resumedatas.store');
+Route::get('resume', [ResumeDataController::class,'index'])->name('resumesdatas.index');
