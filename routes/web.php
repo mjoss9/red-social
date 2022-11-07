@@ -14,6 +14,7 @@ use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\WelcomeControler;
 use App\Http\Controllers\ResumeDataController;
 use App\Http\Controllers\AcademicTitleController;
+use App\Http\Controllers\SeminarCourseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,6 +98,9 @@ Route::middleware([
     // -------- Titulo Academico-> AcademicTitle --------
     Route::post('academictitle', [AcademicTitleController::class, 'store'])->name('academictitles.store');
     Route::get('tituloacademico', [AcademicTitleController::class,'index'])->name('academictitles.index');
+    // -------- Curso y Seminario-> SeminarCourse --------
+    Route::post('curseseminar', [SeminarCourseController::class, 'store'])->name('seminarcourses.store');
+    Route::get('cursoseminario', [SeminarCourseController::class,'index'])->name('seminarcourses.index');
 
 
 });

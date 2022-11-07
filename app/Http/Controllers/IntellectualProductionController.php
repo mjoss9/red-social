@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SeminarCourse;
+use App\Models\IntellectualProduction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-class SeminarCourseController extends Controller
+class IntellectualProductionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,6 @@ class SeminarCourseController extends Controller
     public function index()
     {
         //
-        $seminarcourses = SeminarCourse::latest()->get();
-        return Inertia::render('ViewResumes/SeminarCourse', [
-            'seminarcourses' =>$seminarcourses]);
     }
 
     /**
@@ -41,22 +37,15 @@ class SeminarCourseController extends Controller
     public function store(Request $request)
     {
         //
-        SeminarCourse::create([ 
-            'titulo'=> $request->titulo,
-            'universidad'=> $request->universidad,
-            'añot'=> $request->añot,
-            'horas'=> $request->horas,
-         ]);
-         return back(); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SeminarCourse  $seminarCourse
+     * @param  \App\Models\IntellectualProduction  $intellectualProduction
      * @return \Illuminate\Http\Response
      */
-    public function show(SeminarCourse $seminarCourse)
+    public function show(IntellectualProduction $intellectualProduction)
     {
         //
     }
@@ -64,10 +53,10 @@ class SeminarCourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SeminarCourse  $seminarCourse
+     * @param  \App\Models\IntellectualProduction  $intellectualProduction
      * @return \Illuminate\Http\Response
      */
-    public function edit(SeminarCourse $seminarCourse)
+    public function edit(IntellectualProduction $intellectualProduction)
     {
         //
     }
@@ -76,10 +65,10 @@ class SeminarCourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SeminarCourse  $seminarCourse
+     * @param  \App\Models\IntellectualProduction  $intellectualProduction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SeminarCourse $seminarCourse)
+    public function update(Request $request, IntellectualProduction $intellectualProduction)
     {
         //
     }
@@ -87,13 +76,11 @@ class SeminarCourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SeminarCourse  $seminarCourse
+     * @param  \App\Models\IntellectualProduction  $intellectualProduction
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SeminarCourse $seminarCourse)
+    public function destroy(IntellectualProduction $intellectualProduction)
     {
         //
-        $seminarCourse->delete();
-        return back(); 
     }
 }
