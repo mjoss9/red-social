@@ -56,6 +56,7 @@ class ResumeDataController extends Controller
             'nacimientol'=> $request->nacimientol,
             'sexo'=> $request->sexo,
             'telefono'=> $request->telefono,
+
          ]);
          return back(); 
     }

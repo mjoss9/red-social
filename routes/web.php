@@ -13,6 +13,7 @@ use App\Http\Controllers\User\CommentLikeController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\WelcomeControler;
 use App\Http\Controllers\ResumeDataController;
+use App\Http\Controllers\AcademicTitleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,7 +93,11 @@ Route::middleware([
 
     // -------- Datos Personales-> ResumeData --------
     Route::post('resumedata', [ResumeDataController::class, 'store'])->name('resumedatas.store');
-Route::get('resume', [ResumeDataController::class,'index'])->name('resumesdatas.index');
+    Route::get('resume', [ResumeDataController::class,'index'])->name('resumesdatas.index');
+    // -------- Titulo Academico-> AcademicTitle --------
+    Route::post('academictitle', [AcademicTitleController::class, 'store'])->name('academictitles.store');
+    Route::get('tituloacademico', [AcademicTitleController::class,'index'])->name('academictitles.index');
+
 
 });
 

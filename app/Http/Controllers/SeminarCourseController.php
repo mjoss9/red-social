@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AcademicTitle;
+use App\Models\SeminarCourse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
-
-class AcademicTitleController extends Controller
+class SeminarCourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,6 @@ class AcademicTitleController extends Controller
     public function index()
     {
         //
-        $academictitles = AcademicTitle::latest()->get();
-        return Inertia::render('ViewResumes/AcademicTitle', [
-            'academictitles' =>$academictitles]);
     }
 
     /**
@@ -42,22 +37,15 @@ class AcademicTitleController extends Controller
     public function store(Request $request)
     {
         //
-        AcademicTitle::create([ 
-            'titulo'=> $request->titulo,
-            'universidad'=> $request->universidad,
-            'añot'=> $request->añot,
-            'horas'=> $request->horas,
-         ]);
-         return back(); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AcademicTitle  $academicTitle
+     * @param  \App\Models\SeminarCourse  $seminarCourse
      * @return \Illuminate\Http\Response
      */
-    public function show(AcademicTitle $academicTitle)
+    public function show(SeminarCourse $seminarCourse)
     {
         //
     }
@@ -65,10 +53,10 @@ class AcademicTitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AcademicTitle  $academicTitle
+     * @param  \App\Models\SeminarCourse  $seminarCourse
      * @return \Illuminate\Http\Response
      */
-    public function edit(AcademicTitle $academicTitle)
+    public function edit(SeminarCourse $seminarCourse)
     {
         //
     }
@@ -77,10 +65,10 @@ class AcademicTitleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AcademicTitle  $academicTitle
+     * @param  \App\Models\SeminarCourse  $seminarCourse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AcademicTitle $academicTitle)
+    public function update(Request $request, SeminarCourse $seminarCourse)
     {
         //
     }
@@ -88,13 +76,11 @@ class AcademicTitleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AcademicTitle  $academicTitle
+     * @param  \App\Models\SeminarCourse  $seminarCourse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AcademicTitle $academicTitle)
+    public function destroy(SeminarCourse $seminarCourse)
     {
         //
-        $academicTitle->delete();
-        return back(); 
     }
 }
