@@ -91,8 +91,8 @@ Route::middleware([
     // Experiencia Docente -> TeachingExperience
 
     // -------- Datos Personales-> ResumeData --------
-
+    Route::post('resumedata', [ResumeDataController::class, 'store'])->name('resumedatas.store');
+Route::get('resume', [ResumeDataController::class,'index'])->name('resumesdatas.index');
 
 });
-Route::post('resumedata', [ResumeDataController::class, 'store'])->name('resumedatas.store');
-Route::get('resume', [ResumeDataController::class,'index'])->name('resumesdatas.index');
+
