@@ -69,7 +69,10 @@ class ResumeDataController extends Controller
      */
     public function show(ResumeData $resumeData)
     {
-        //
+        $resumedatas = ResumeData::latest()->get();
+        return Inertia::render('ViewResumes/EditResume', [
+            'resumedatas' =>$resumedatas]);
+        // return 'hola bro';
     }
 
     /**

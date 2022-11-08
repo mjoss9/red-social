@@ -60,6 +60,10 @@ class AcademicTitleController extends Controller
     public function show(AcademicTitle $academicTitle)
     {
         //
+        $academictitles = AcademicTitle::latest()->get();
+        return Inertia::render('ViewResumes/ViewResume', [
+            'academictitles' =>$academictitles]);
+        // return 'hola bro';
     }
 
     /**

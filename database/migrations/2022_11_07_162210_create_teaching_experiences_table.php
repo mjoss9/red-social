@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('intellectual_productions', function (Blueprint $table) {
+        Schema::create('teaching_experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->string('universidad');
-            $table->string('añoe');
-            $table->string('paginas');
-            $table->string('nregistro');
+            $table->string('años');
+            $table->string('carrera');
+            $table->string('asignatura');
+            $table->string('desde');
+            $table->string('hasta');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('intellectual_productions');
+        Schema::dropIfExists('teaching_experiences');
     }
 };

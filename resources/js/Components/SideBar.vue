@@ -130,6 +130,12 @@ export default {
                                     >
                                         Perfil
                                     </JetDropdownLink>
+                                    <!-- Editar Curriculum -->
+                                    <JetDropdownLink
+                                        :href="route('resumesdatas.show')"
+                                    >
+                                        Editar Curriculum
+                                    </JetDropdownLink>
                                     <!-- Authentication -->
                                     <form @submit.prevent="logout">
                                         <JetDropdownLink as="button">

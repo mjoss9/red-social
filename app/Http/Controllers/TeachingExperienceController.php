@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\IntellectualProduction;
+use App\Models\TeachingExperience;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class IntellectualProductionController extends Controller
+class TeachingExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class IntellectualProductionController extends Controller
     public function index()
     {
         //
-        $intellectualproductions = IntellectualProduction::latest()->get();
-        return Inertia::render('ViewResumes/IntellectualProduction', [
-            'intellectualproductions' =>$intellectualproductions]);
+        $teachingexperiences = TeachingExperience::latest()->get();
+        return Inertia::render('ViewResumes/TeachingExperience', [
+            'teachingexperiences' =>$teachingexperiences]);
     }
 
     /**
@@ -41,12 +41,12 @@ class IntellectualProductionController extends Controller
     public function store(Request $request)
     {
         //
-        IntellectualProduction::create([ 
-            'titulo'=> $request->titulo,
-            'universidad'=> $request->universidad,
-            'añoe'=> $request->añoe,
-            'paginas'=> $request->paginas,
-            'nregistro'=> $request->nregistro,
+        TeachingExperience::create([ 
+            'años'=> $request->años,
+            'carrera'=> $request->carrera,
+            'asignatura'=> $request->asignatura,
+            'desde'=> $request->desde,
+            'hasta'=> $request->hasta,
          ]);
          return back(); 
     }
@@ -54,10 +54,10 @@ class IntellectualProductionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\IntellectualProduction  $intellectualProduction
+     * @param  \App\Models\TeachingExperience  $teachingExperience
      * @return \Illuminate\Http\Response
      */
-    public function show(IntellectualProduction $intellectualProduction)
+    public function show(TeachingExperience $teachingExperience)
     {
         //
     }
@@ -65,10 +65,10 @@ class IntellectualProductionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\IntellectualProduction  $intellectualProduction
+     * @param  \App\Models\TeachingExperience  $teachingExperience
      * @return \Illuminate\Http\Response
      */
-    public function edit(IntellectualProduction $intellectualProduction)
+    public function edit(TeachingExperience $teachingExperience)
     {
         //
     }
@@ -77,10 +77,10 @@ class IntellectualProductionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IntellectualProduction  $intellectualProduction
+     * @param  \App\Models\TeachingExperience  $teachingExperience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IntellectualProduction $intellectualProduction)
+    public function update(Request $request, TeachingExperience $teachingExperience)
     {
         //
     }
@@ -88,13 +88,13 @@ class IntellectualProductionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\IntellectualProduction  $intellectualProduction
+     * @param  \App\Models\TeachingExperience  $teachingExperience
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IntellectualProduction $intellectualProduction)
+    public function destroy(TeachingExperience $teachingExperience)
     {
         //
-        $intellectualProduction->delete();
+        $teachingExperience->delete();
         return back(); 
     }
 }

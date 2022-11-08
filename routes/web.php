@@ -15,6 +15,8 @@ use App\Http\Controllers\WelcomeControler;
 use App\Http\Controllers\ResumeDataController;
 use App\Http\Controllers\AcademicTitleController;
 use App\Http\Controllers\SeminarCourseController;
+use App\Http\Controllers\IntellectualProductionController;
+use App\Http\Controllers\TeachingExperienceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,6 +94,9 @@ Route::middleware([
     // Poduccion Intelectual-> IntellectualProduction
     // Experiencia Docente -> TeachingExperience
 
+    // -------- Datos Personales-> vista datos personales --------
+    Route::get('editresume', [ResumeDataController::class,'show'])->name('resumesdatas.show');
+    Route::get('viewresume', [AcademicTitleController::class,'show'])->name('academictitles.show');
     // -------- Datos Personales-> ResumeData --------
     Route::post('resumedata', [ResumeDataController::class, 'store'])->name('resumedatas.store');
     Route::get('resume', [ResumeDataController::class,'index'])->name('resumesdatas.index');
@@ -101,6 +106,12 @@ Route::middleware([
     // -------- Curso y Seminario-> SeminarCourse --------
     Route::post('curseseminar', [SeminarCourseController::class, 'store'])->name('seminarcourses.store');
     Route::get('cursoseminario', [SeminarCourseController::class,'index'])->name('seminarcourses.index');
+    // -------- Poduccion Intelectual-> IntellectualProduction --------
+    Route::post('intellectualproduccion', [IntellectualProductionController::class, 'store'])->name('intellectualproductions.store');
+    Route::get('produccionintelectual', [IntellectualProductionController::class,'index'])->name('intellectualproductions.index');
+    // --------Experiencia Docente-> TeachingExperience --------
+    Route::post('teachingexperience', [TeachingExperienceController::class, 'store'])->name('teachingexperiences.store');
+    Route::get('experienciadocente', [TeachingExperienceController::class,'index'])->name('teachingexperiences.index');
 
 
 });
